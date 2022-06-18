@@ -128,31 +128,31 @@ export const ChatStreamRoom = ({
     });
 
     // use MutationObserver to restucture the chatbox
-    const observer = new MutationObserver((muts) => {
-      if (document.querySelector(".chatbox-title__buttons") !== null) {
-        document.querySelector(".chat-head").innerHTML = "";
-      }
+    // const observer = new MutationObserver((muts) => {
+    //   if (document.querySelector(".chatbox-title__buttons") !== null) {
+    //     document.querySelector(".chat-head").innerHTML = "";
+    //   }
 
-      if (document.querySelector(".chat-textarea") !== null) {
-        document
-          .querySelector(".chat-textarea")
-          .addEventListener("keydown", (e) => {
-            if ([37, 38, 39, 40].includes(e.keyCode))
-              e.stopImmediatePropagation();
-          });
-      }
+    //   if (document.querySelector(".chat-textarea") !== null) {
+    //     document
+    //       .querySelector(".chat-textarea")
+    //       .addEventListener("keydown", (e) => {
+    //         if ([37, 38, 39, 40].includes(e.keyCode))
+    //           e.stopImmediatePropagation();
+    //       });
+    //   }
 
-      if (document.querySelector(".send-button") !== null) {
-        document.querySelector(".send-button").remove();
-        observer.disconnect();
-      }
-    });
+    //   if (document.querySelector(".send-button") !== null) {
+    //     document.querySelector(".send-button").remove();
+    //     observer.disconnect();
+    //   }
+    // });
 
-    observer.observe(document, {
-      childList: true,
-      attributes: true,
-      subtree: true,
-    });
+    // observer.observe(document, {
+    //   childList: true,
+    //   attributes: true,
+    //   subtree: true,
+    // });
 
     // use MutationObserver to resurect the chatbox when it vanishes
     setTimeout(() => {

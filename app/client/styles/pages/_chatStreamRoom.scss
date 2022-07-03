@@ -1,10 +1,15 @@
 $mobile_landscape_height: 450px !default;
 $mobile_portrait_length: 480px !default;
 
-#conversejs.converse-embedded.converse-singleton .flyout,
-#conversejs.converse-fullscreen.converse-singleton .flyout {
+converse-muc {
   border: $chat-border-width solid $chat-border !important;
   border-radius: 7px !important;
+}
+
+.flyout {
+  &.box-flyout {
+    background-color: transparent !important;
+  }
 }
 
 .chatstream-section {
@@ -19,11 +24,11 @@ $mobile_portrait_length: 480px !default;
 #conversejs {
   z-index: 5 !important;
 
-  .badge,
-  .chat-info,
-  .hide-occupants {
-    display: none !important;
-  }
+  // .badge,
+  // .chat-info,
+  // .hide-occupants {
+  //   display: none !important;
+  // }
 
   .chat-head {
     background-color: $background-color !important;

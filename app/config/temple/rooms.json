@@ -1,279 +1,280 @@
 {
     "rooms": [
-        {
-            "id": "urizen",
-            "name": "Chapel of Urizen",
-            "type": "CHATSTREAM",
-            "capacity": 300,
-            "doorTint": "#000000",
-            "muteRoom": true,
-            "hideVideo": true,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom1.png",
-            "iframeOptions": {
-                "src": "https://www.youtube.com/embed/6I8FYbZjqA8"
-            },
-            "description": " Laws of peace, of love, of unity not pity, compassion, forgiveness - William Blake. JOIN THE MEETING: https://us02web.zoom.us/j/81259398444",
-            "directions": {
-                "east": "sanctuary"
-            },
-            "map": {
-                "x": 2,
-                "y": 42,
-                "width": 5,
-                "height": 10,
-                "doors": {
-                    "east": 46
-                }
-            }
+      {
+        "id": "andromalius",
+        "name": "Andromalius",
+        "type": "CHATSTREAM",
+        "capacity": 300,
+        "muteRoom": true,
+        "hideVideo": true,
+        "doorTint": "#000000",
+        "description": "What treasures lay undiscovered for those who gather here? JOIN THE PARTY: https://us02web.zoom.us/j/82271175530",
+        "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom4.png",
+        "iframeOptions": {
+          "src": "https://www.youtube.com/embed/4qxucd-Gq1s"
         },
-        {
-            "id": "malthus",
-            "name": "Malthus",
-            "type": "CHATSTREAM",
-            "capacity": 300,
-            "doorTint": "#000000",
-            "muteRoom": false,
-            "hideVideo": false,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom2.png",
-            "iframeOptions": {
-                "src": "https://www.youtube.com/embed/dNd4CHyRTPA"
-            },
-            "description": "Join Dungeon Mistress Kaelea and a team of intrepid adventurers as they unravel mysteries in the Kingdom of Ekerion, a 5th Edition Dungeons & Dragons homebrew campaign. Tune in for laughs, silly voices, twists and turns, and lots of dice-rolling shenanigans.",
-            "directions": {
-                "south": "library",
-                "east": "sacristy"
-            },
-            "map": {
-                "x": 7,
-                "y": 11,
-                "width": 2,
-                "height": 11,
-                "doors": {
-                    "south": 7,
-                    "east": 18
-                }
-            }
+        "directions": {
+          "south": "sacristy"
         },
-        {
-            "id": "library",
-            "name": "Library",
-            "type": "IMAGEMAP",
-            "capacity": 666,
-            "doorTint": "#000000",
-            "muteRoom": false,
-            "hideVideo": false,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/greyfaction/gfLibrary.jpeg",
-            "imageMapOptions": "satanic-library-map",
-            "iframeOptions": {
-                "src": "https://www.youtube.com/embed/d-k0Tc1_JMM"
-            },
-            "description": "A precious, mouldering pleasure 't is\nTo meet an antique book,\nIn just the dress his century wore;\nA privilege, I think - Emily Dickinson",
-            "directions": {
-                "north": "malthus"
-            },
-            "map": {
-                "x": 7,
-                "y": 22,
-                "width": 2,
-                "height": 7,
-                "doors": {
-                    "north": 7
-                }
-            }
-        },
-        {
-            "id": "andromalius",
-            "name": "Andromalius",
-            "type": "CHATSTREAM",
-            "capacity": 300,
-            "muteRoom": true,
-            "hideVideo": true,
-            "doorTint": "#000000",
-            "description": "What treasures lay undiscovered for those who gather here? JOIN THE PARTY: https://us02web.zoom.us/j/82271175530",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom4.png",
-            "iframeOptions": {
-                "src": "https://www.youtube.com/embed/4qxucd-Gq1s"
-            },
-            "directions": {
-                "south": "sacristy"
-            },
-            "map": {
-                "x": 7,
-                "y": 0,
-                "width": 6,
-                "height": 10,
-                "doors": {
-                    "south": 9
-                }
-            }
-        },
-        {
-            "id": "sacristy",
-            "name": "The Sacristy",
-            "type": "JITSI",
-            "capacity": 30,
-            "muteRoom": false,
-            "hideVideo": false,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom5.png",
-            "iframeOptions": {
-                "src": "https://www.youtube.com/embed/LFZuN8PunoU"
-            },
-            "description": "We line these walls with the vessels and vestments of our practice.",
-            "directions": {
-                "north": "andromalius",
-                "east": "bifrons",
-                "south": "sanctuary",
-                "west": "malthus"
-            },
-            "doorTint": "#000000",
-            "map": {
-                "x": 9,
-                "y": 10,
-                "width": 2,
-                "height": 20,
-                "doors": {
-                    "north": 9,
-                    "south": 10,
-                    "east": 18,
-                    "west": 18
-                }
-            }
-        },
-        {
-            "id": "bifrons",
-            "name": "Bifrons",
-            "type": "CHATSTREAM",
-            "capacity": 300,
-            "doorTint": "#000000",
-            "muteRoom": true,
-            "hideVideo": true,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom1.png",
-            "iframeOptions": {
-                "src": "https://iframe.dacast.com/live/335563b1-f2ee-04b3-c63b-0a7d13f03b92/83cea71b-fda0-4ea7-0d5c-636e2a0695a9"
-            },
-            "description": "The mysteries of art and science will be known to us.",
-            "directions": {
-                "west": "sacristy",
-                "south": "raum"
-            },
-            "map": {
-                "x": 11,
-                "y": 11,
-                "width": 2,
-                "height": 11,
-                "doors": {
-                    "south": 12,
-                    "west": 18
-                }
-            }
-        },
-        {
-            "id": "raum",
-            "name": "Raum",
-            "type": "JITSI",
-            "muteRoom": false,
-            "hideVideo": false,
-            "capacity": 30,
-            "description": "Speak my friends of the past, present, future; of reconciliation, of foes, of love.",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom7.png",
-            "iframeOptions": {
-                "src": "https://www.youtube.com/embed/Y6yOpo5oLVw"
-            },
-            "imageMapOptions": "satanic-merch-map",
-            "directions": {
-                "north": "bifrons"
-            },
-            "map": {
-                "x": 11,
-                "y": 22,
-                "width": 2,
-                "height": 7,
-                "doors": {
-                    "north": 12
-                }
-            },
-            "doorTint": "#000000"
-        },
-        {
-            "id": "sanctuary",
-            "name": "The Sanctuary",
-            "capacity": 666,
-            "muteRoom": true,
-            "hideVideo": true,
-            "description": "Timelessness coalesces above the pews set out before you. Gather and be heard.",
-            "type": "CHATSTREAM",
-            "iframeOptions": {
-                "src": "https://www.youtube.com/embed/MJe9zWMg5RI"
-            },
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom8.png",
-            "directions": {
-                "north": "sacristy",
-                "east": "los",
-                "south": "narthex",
-                "west": "urizen"
-            },
-            "map": {
-                "x": 7,
-                "y": 30,
-                "width": 6,
-                "height": 23,
-                "doors": {
-                    "north": 10,
-                    "south": 9,
-                    "east": 46,
-                    "west": 46
-                }
-            },
-            "doorTint": "#000000"
-        },
-        {
-            "id": "los",
-            "name": "Chapel of Los",
-            "type": "CHATSTREAM",
-            "capacity": 300,
-            "muteRoom": true,
-            "hideVideo": true,
-            "iframeOptions": {
-                "src": "https://www.youtube.com/embed/lEi9KQGXDCE"
-            },
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom9.png",
-            "description": "The forges of imagination gleam and bellow with the rhythms of life. JOIN THE CONVERSATION: https://us02web.zoom.us/j/83187354585",
-            "directions": {
-                "west": "sanctuary"
-            },
-            "map": {
-                "x": 13,
-                "y": 42,
-                "width": 5,
-                "height": 10,
-                "doors": {
-                    "west": 46
-                }
-            },
-            "doorTint": "#000000"
-        },
-        {
-            "id": "narthex",
-            "name": "The Narthex",
-            "type": "JITSI",
-            "muteRoom": false,
-            "hideVideo": false,
-            "capacity": 50,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom10.png",
-            "description": "The whispers of bygone eras mingle with the faintest incense to bid you welcome. Select the map and calendar in the bottom left to explore our Temple.",
-            "directions": {
-                "north": "sanctuary"
-            },
-            "map": {
-                "x": 7,
-                "y": 53,
-                "width": 6,
-                "height": 10,
-                "doors": {
-                    "north": 9
-                }
-            },
-            "doorTint": "#000000"
+        "map": {
+          "x": 7,
+          "y": 0,
+          "width": 6,
+          "height": 10,
+          "doors": {
+            "south": 9
+          }
         }
+      },
+      {
+        "id": "bifrons",
+        "name": "Bifrons",
+        "type": "CHATSTREAM",
+        "capacity": 300,
+        "doorTint": "#000000",
+        "muteRoom": true,
+        "hideVideo": true,
+        "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom1.png",
+        "iframeOptions": {
+          "src": "https://iframe.dacast.com/live/335563b1-f2ee-04b3-c63b-0a7d13f03b92/83cea71b-fda0-4ea7-0d5c-636e2a0695a9"
+        },
+        "description": "The mysteries of art and science will be known to us.",
+        "directions": {
+          "west": "sacristy",
+          "south": "raum"
+        },
+        "map": {
+          "x": 11,
+          "y": 11,
+          "width": 2,
+          "height": 11,
+          "doors": {
+            "south": 12,
+            "west": 18
+          }
+        }
+      },
+      {
+        "id": "los",
+        "name": "Chapel of Los",
+        "type": "CHATSTREAM",
+        "capacity": 300,
+        "muteRoom": true,
+        "hideVideo": true,
+        "iframeOptions": {
+          "src": "https://www.youtube.com/embed/lEi9KQGXDCE"
+        },
+        "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom9.png",
+        "description": "The forges of imagination gleam and bellow with the rhythms of life. JOIN THE CONVERSATION: https://us02web.zoom.us/j/83187354585",
+        "directions": {
+          "west": "sanctuary"
+        },
+        "map": {
+          "x": 13,
+          "y": 42,
+          "width": 5,
+          "height": 10,
+          "doors": {
+            "west": 46
+          }
+        },
+        "doorTint": "#000000"
+      },
+      {
+        "id": "urizen",
+        "name": "Chapel of Urizen",
+        "type": "CHATSTREAM",
+        "capacity": 300,
+        "doorTint": "#000000",
+        "muteRoom": true,
+        "hideVideo": true,
+        "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom1.png",
+        "iframeOptions": {
+          "src": "https://www.youtube.com/embed/6I8FYbZjqA8"
+        },
+        "description": " Laws of peace, of love, of unity not pity, compassion, forgiveness - William Blake. JOIN THE MEETING: https://us02web.zoom.us/j/81259398444",
+        "directions": {
+          "east": "sanctuary"
+        },
+        "map": {
+          "x": 2,
+          "y": 42,
+          "width": 5,
+          "height": 10,
+          "doors": {
+            "east": 46
+          }
+        }
+      },
+      {
+        "id": "library",
+        "name": "Library",
+        "type": "IMAGEMAP",
+        "capacity": 666,
+        "doorTint": "#000000",
+        "muteRoom": false,
+        "hideVideo": false,
+        "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/greyfaction/gfLibrary.jpeg",
+        "imageMapOptions": "satanic-library-map",
+        "iframeOptions": {
+          "src": "https://www.youtube.com/embed/d-k0Tc1_JMM"
+        },
+        "description": "A precious, mouldering pleasure 't is\nTo meet an antique book,\nIn just the dress his century wore;\nA privilege, I think - Emily Dickinson",
+        "directions": {
+          "north": "malthus"
+        },
+        "map": {
+          "x": 7,
+          "y": 22,
+          "width": 2,
+          "height": 7,
+          "doors": {
+            "north": 7
+          }
+        }
+      },
+      {
+        "id": "malthus",
+        "name": "Malthus",
+        "type": "CHATSTREAM",
+        "capacity": 300,
+        "doorTint": "#000000",
+        "muteRoom": false,
+        "hideVideo": false,
+        "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom2.png",
+        "iframeOptions": {
+          "src": "https://www.youtube.com/embed/dNd4CHyRTPA"
+        },
+        "description": "Join Dungeon Mistress Kaelea and a team of intrepid adventurers as they unravel mysteries in the Kingdom of Ekerion, a 5th Edition Dungeons & Dragons homebrew campaign. Tune in for laughs, silly voices, twists and turns, and lots of dice-rolling shenanigans.",
+        "directions": {
+          "south": "library",
+          "east": "sacristy"
+        },
+        "map": {
+          "x": 7,
+          "y": 11,
+          "width": 2,
+          "height": 11,
+          "doors": {
+            "south": 7,
+            "east": 18
+          }
+        }
+      },
+      {
+        "id": "raum",
+        "name": "Raum",
+        "type": "JITSI",
+        "muteRoom": false,
+        "hideVideo": false,
+        "capacity": 30,
+        "description": "Speak my friends of the past, present, future; of reconciliation, of foes, of love.",
+        "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom7.png",
+        "iframeOptions": {
+          "src": "https://www.youtube.com/embed/Y6yOpo5oLVw"
+        },
+        "imageMapOptions": "satanic-merch-map",
+        "directions": {
+          "north": "bifrons"
+        },
+        "map": {
+          "x": 11,
+          "y": 22,
+          "width": 2,
+          "height": 7,
+          "doors": {
+            "north": 12
+          }
+        },
+        "doorTint": "#000000"
+      },
+      {
+        "id": "narthex",
+        "name": "The Narthex",
+        "type": "JITSI",
+        "muteRoom": false,
+        "hideVideo": false,
+        "capacity": 50,
+        "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom10.png",
+        "description": "The whispers of bygone eras mingle with the faintest incense to bid you welcome. Select the map and calendar in the bottom left to explore our Temple.",
+        "directions": {
+          "north": "sanctuary"
+        },
+        "map": {
+          "x": 7,
+          "y": 53,
+          "width": 6,
+          "height": 10,
+          "doors": {
+            "north": 9
+          }
+        },
+        "doorTint": "#000000"
+      },
+      {
+        "id": "sacristy",
+        "name": "The Sacristy",
+        "type": "JITSI",
+        "capacity": 30,
+        "muteRoom": false,
+        "hideVideo": false,
+        "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom5.png",
+        "iframeOptions": {
+          "src": "https://www.youtube.com/embed/LFZuN8PunoU"
+        },
+        "description": "We line these walls with the vessels and vestments of our practice.",
+        "directions": {
+          "north": "andromalius",
+          "east": "bifrons",
+          "south": "sanctuary",
+          "west": "malthus"
+        },
+        "doorTint": "#000000",
+        "map": {
+          "x": 9,
+          "y": 10,
+          "width": 2,
+          "height": 20,
+          "doors": {
+            "north": 9,
+            "south": 10,
+            "east": 18,
+            "west": 18
+          }
+        }
+      },
+      {
+        "id": "sanctuary",
+        "name": "The Sanctuary",
+        "capacity": 666,
+        "muteRoom": true,
+        "hideVideo": true,
+        "description": "Timelessness coalesces above the pews set out before you. Gather and be heard.",
+        "type": "CHATSTREAM",
+        "iframeOptions": {
+          "src": "https://www.youtube.com/embed/MJe9zWMg5RI"
+        },
+        "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom8.png",
+        "directions": {
+          "north": "sacristy",
+          "east": "los",
+          "south": "narthex",
+          "west": "urizen"
+        },
+        "map": {
+          "x": 7,
+          "y": 30,
+          "width": 6,
+          "height": 23,
+          "doors": {
+            "north": 10,
+            "south": 9,
+            "east": 46,
+            "west": 46
+          }
+        },
+        "doorTint": "#000000"
+      }
     ]
-}
+  }
+  

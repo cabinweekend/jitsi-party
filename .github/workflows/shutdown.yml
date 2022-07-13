@@ -3,6 +3,7 @@ name: shutdown
 on:
   schedule:
     - cron: '01 4 * * 3' # Shut down temple every Wednesday at 12:01AM EDT
+    - cron: '15 22 * * 3' # Auto shutdown testing
   workflow_dispatch:
 
 defaults:

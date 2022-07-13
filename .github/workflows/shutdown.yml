@@ -1,6 +1,8 @@
 name: shutdown
 
 on:
+  schedule:
+    - cron: '01 4 * * 3' # Shut down temple every Wednesday at 12:01AM EDT
   workflow_dispatch:
 
 defaults:

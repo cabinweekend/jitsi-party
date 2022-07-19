@@ -8,11 +8,11 @@
             "doorTint": "#000000",
             "muteRoom": false,
             "hideVideo": false,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/kitchen.jpg",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/kitchen.jpg",
             "iframeOptions": {
                 "src": "https://www.youtube.com/embed/LqsKG7TWZWI"
             },
-            "description": "Never be bullied into silence. Never allow yourself to be made a victim. Accept no one’s definition of your life; define yourself. — Harvey Fierstein",
+            "description": "Live deliciously in the kitchen.",
             "directions": {
                 "west": "powderRoom",
                 "north": "grandBallroom",
@@ -38,8 +38,8 @@
             "muteRoom": false,
             "hideVideo": false,
             "doorTint": "#000000",
-            "description": "If you help elect more gay people, that gives a green light to all who feel disenfranchised a green light to move forward. — Harvey Milk",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/powderroom.jpg",
+            "description": "Freshen up with a few friends.",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/powder_room.jpg",
             "directions": {
                 "east": "kitchen"
             },
@@ -60,11 +60,11 @@
             "capacity": 200,
             "muteRoom": false,
             "hideVideo": false,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/grandballroom.jpg",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/grand_ballroom.jpg",
             "iframeOptions": {
                 "src": "https://iframe.dacast.com/live/335563b1-f2ee-04b3-c63b-0a7d13f03b92/83cea71b-fda0-4ea7-0d5c-636e2a0695a9"
             },
-            "description": "We are ordinary people, living our lives, and trying as civil rights activist Dorothy Cotton said, to ‘fix what ain’t right’ in our society. — Sen. Tammy",
+            "description": "Minuet, Waltz, Foxtrot or Freeform: Dancing Commences!",
             "directions": {
                 "south": "kitchen"
             },
@@ -86,11 +86,11 @@
             "capacity": 400,
             "muteRoom": false,
             "hideVideo": false,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/backparlor.jpg",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/back_parlor.jpg",
             "iframeOptions": {
-                "src": "https://www.youtube.com/embed/jPO06Y2W-v8"
+                "src": "https://www.youtube.com/embed/_dbnROAk3VU"
             },
-            "description": "Love is never wrong. — Melissa Etheridge",
+            "description": "Please use the incense burner instead of getting ash in the candles",
             "directions": {
                 "south": "den",
                 "west": "ritualChamber"
@@ -115,7 +115,7 @@
             "hideVideo": false,
             "capacity": 10,
             "description": "What goes up must come down-- at terminal velocity.",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/elevator.jpg",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/elevator.jpg",
             "directions": {
                 "north": "library",
                 "south": "frontParlor",
@@ -140,11 +140,11 @@
             "capacity": 300,
             "muteRoom": false,
             "hideVideo": false,
-            "description": "Our society needs to recognize the unstoppable momentum toward unequivocal civil equality for every gay, lesbian, bisexual, and transgender citizen of this country. — Zachary Quinto",
+            "description": "Loveseats, chaises, armchairs-- oh my!o",
             "type": "CHATSTREAM",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/frontparlor.jpg",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/front_parlor.jpg",
             "iframeOptions": {
-                "src": "https://www.youtube.com/embed/FoDk8_MPr9M"
+                "src": "https://www.youtube.com/embed/xFAkDq9L4Zo"
             },
             "directions": {
                 "east": "teaRoom",
@@ -172,10 +172,10 @@
             "muteRoom": false,
             "hideVideo": false,
             "iframeOptions": {
-                "src": "https://www.youtube.com/embed/-nYzg7dPVlg"
+                "src": "https://www.youtube.com/embed/FsTzlt_Ov8A"
             },
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/tearoom.jpg",
-            "description": "I’m living by example by continuing on with my career and having a full, rich life, and I am incidentally gay. — Portia de Rossi",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/tea_room.jpg",
+            "description": "Try an English Breakfast looseleaf with a vanilla pod or a cinnamon stick.",
             "directions": {
                 "north": "den",
                 "west": "frontParlor",
@@ -204,8 +204,8 @@
             "capacity": 30,
             "muteRoom": false,
             "hideVideo": false,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/den.jpg",
-            "description": "To love oneself is the beginning of a lifelong romance. — Oscar Wilde",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/den.jpg",
+            "description": "Would you please set up an extra easel?",
             "directions": {
                 "north": "backParlor",
                 "south": "teaRoom"
@@ -230,9 +230,9 @@
             "muteRoom": false,
             "hideVideo": false,
             "description": "With a base of amber, sandalwood, tobacco, and frankincense, Baphomet evokes the smokey scent of hidden rooms, velvet thrones, and ancient ritual chambers.(-Serpentinae.com)",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/ritualchamber.jpg",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/ritual_chamber.jpg",
             "iframeOptions": {
-                "src": "https://www.youtube.com/embed/jquDTZJAqig"
+                "src": "https://www.youtube.com/embed/0y88sSeI2RU"
             },
             "directions": {
                 "east": "backParlor"
@@ -255,8 +255,8 @@
             "capacity": 25,
             "muteRoom": false,
             "hideVideo": false,
-            "description": "Donate to support these bats at batworld.org",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/belfry.jpg",
+            "description": "Livestreaming your new best friends, bats from BatWorld. Donate at batworld.org",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/belfry.jpg",
             "iframeOptions": {
                 "src": "https://video.nest.com/embedded/live/UYYI6tFUy2?autoplay=1"
             },
@@ -282,7 +282,7 @@
             "hideVideo": false,
             "description": "Peruse the Archives: Courtesy of Grey Faction",
             "type": "IMAGEMAP",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/library.jpg",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/library.jpg",
             "directions": {
                 "east": "sleepingPorch",
                 "north": "boudoir",
@@ -310,9 +310,9 @@
             "capacity": 25,
             "muteRoom": false,
             "hideVideo": false,
-            "description": "Equality means more than passing laws. The struggle is really won in the hearts and minds of the community, where it really counts. — Barbara Gittings",
+            "description": "Give the goats from Woodstock Farm Sanctuary a snack at woodstocksanctuary.org/",
             "type": "JITSI",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/sleepingporch.jpg",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/sleeping_porch.jpg",
             "directions": {
                 "west": "library",
                 "east": "theater"
@@ -339,8 +339,8 @@
             "capacity": 5,
             "muteRoom": false,
             "hideVideo": false,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/aviary.jpg",
-            "description": "My silences had not protected me. Your silence will not protect you. — Audre Lorde",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/aviary.jpg",
+            "description": "A cacophony of hoots, chirps and flutters.",
             "directions": {
                 "east": "library"
             },
@@ -362,7 +362,7 @@
             "description": "If you do not tell the truth about yourself you cannot tell it about other people.― Virginia Woolf.",
             "art": {
                 "title": "This exhibition, Juried by Wolf Hollow Director, Zee Soffron, explores and promotes the majesty of these beautiful creatures whose alluring energy continues to inspire. As a commitment to the preservation of these important animals, The Salem Art Gallery at The Satanic Temple Salem pledges the proceeds of the works included in this exhibition towards our neighbors to the north, Wolf Hollow Conservation and Education Center.",
-                "src": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/Pride2022/infernaltheater.jpg"
+                "src": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/infernal_theater.jpg"
             },
             "directions": {
                 "west": "sleepingPorch",
@@ -2914,7 +2914,7 @@
             "capacity": 15,
             "hideVideo": false,
             "muteRoom": false,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/hex22/secret_tunnels.jpg",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/secret_tunnels.jpg",
             "description": "This looks just like under McMartin Preschool!",
             "directions": {
                 "west": "trapDoor",
@@ -2931,7 +2931,7 @@
             "hideVideo": false,
             "description": "Come for the long pork",
             "doorTint": "#000000",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/hex22/crematorium.jpg",
+            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/crematorium.jpg",
             "directions": {
                 "west": "secretTunnels"
             }

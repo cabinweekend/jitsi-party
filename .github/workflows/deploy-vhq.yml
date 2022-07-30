@@ -1,0 +1,44 @@
+name: deploy-vhq
+
+on:
+  workflow_dispatch:
+    inputs:
+      cognitoAllowedGroups:
+        type: string
+        description: 'Event Cognito group(s)'
+        default: 'SomeEventGroup'
+      vhqPlaceholderEnabled:
+        type: boolean
+        description: 'Enable placeholder page ("test mode")'
+        default: true
+
+jobs:
+  deploy-vhq:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Cancel Previous Runs
+      uses: styfle/cancel-workflow-action@0.9.0
+      with:
+        access_token: ${{ github.token }}
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
+
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Open VHQ
+      uses: ./.github/actions/tf-apply
+      with:
+        vhqEnabled: true
+        partyConfig: tstvhq
+        partyTheme: tst
+        vhqPlaceholderEnabled: ${{ github.event.inputs.vhqPlaceholderEnabled }}
+        cognitoAllowedGroups: "Caretakers PR Benefactors AllHolidays2022 ${{ github.event.inputs.cognitoAllowedGroups }}"
+
+    - name: Wait for VHQ
+      uses: ./.github/actions/wait-for-house

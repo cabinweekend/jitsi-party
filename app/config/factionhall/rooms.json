@@ -2,17 +2,17 @@
     "rooms": [
         {
             "id": "auditorium",
-            "name": "Alan Turing Auditorium",
+            "name": "The Storm Auditorium",
             "type": "CHATSTREAM",
             "capacity": 666,
             "doorTint": "#000000",
             "muteRoom": true,
             "hideVideo": true,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/pride/PrideRoomD.png",
+            "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfstormauditorium.png",
             "iframeOptions": {
-                "src": "https://youtube.com/embed/ghJJlek8UJs"
+                "src": "https://www.youtube.com/embed/VrBSE11QtI4"
             },
-            "description": "We can only see a short distance ahead, but we can see plenty there that needs to be done.",
+            "description": "The Storm that never came.",
             "directions": {
                 "east": "foyer",
                 "north": "hall"
@@ -30,17 +30,17 @@
         },
         {
             "id": "hall",
-            "name": "Harris Glenn Milstead Hall",
+            "name": "Jude Mirra Hall",
             "type": "CHATSTREAM",
             "capacity": 666,
             "doorTint": "#000000",
             "muteRoom": true,
             "hideVideo": true,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/pride/PrideRoomBallroom.png",
+            "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfjudemirrahall.png",
             "iframeOptions": {
-                "src": "https://youtube.com/embed/8zGAysyWIiI"
+                "src": "https://www.youtube.com/embed/6cIuutdaUvo"
             },
-            "description": "All my life I wanted to look like Elizabeth Taylor. Now Elizabeth Taylor looks like me.",
+            "description": "In Memoriam of the Victims of Conspiracy Therapists",
             "directions": {
                 "east": "rotunda",
                 "south": "auditorium"
@@ -58,17 +58,17 @@
         },
         {
             "id": "rotunda",
-            "name": "Sylvia Rivera Rotunda",
+            "name": "Tallmadge Hall",
             "type": "CHATSTREAM",
             "capacity": 666,
             "doorTint": "#000000",
             "muteRoom": true,
             "hideVideo": true,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/pride/PrideRoomHall.png",
+            "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmichelletallmadgehall.png",
             "iframeOptions": {
-                "src": "https://youtube.com/embed/8ONdcDFUSHg"
+                "src": "https://www.youtube.com/embed/q0pC7kflt0M"
             },
-            "description": "We have to be visible. We should not be ashamed of who we are.",
+            "description": "The complete lack of evidence proves everything!",
             "directions": {
                 "west": "hall",
                 "south": "foyer",
@@ -88,14 +88,14 @@
         },
         {
             "id": "theater",
-            "name": "Oscar Wilde Theater",
+            "name": "MKULTRA Theater",
             "type": "CHATSTREAM",
             "capacity": 666,
             "muteRoom": true,
             "hideVideo": true,
             "doorTint": "#000000",
-            "description": "We are all in the gutter, but some of us are looking at the stars.",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/pride/PrideRoomZ.png",
+            "description": "Surprise LSD trip, anyone?",
+            "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmkultratheater.jpeg",
             "iframeOptions": {
                 "src": "https://youtube.com/embed/f40fV1wTyBc"
             },
@@ -114,16 +114,16 @@
         },
         {
             "id": "large-lounge",
-            "name": "Audre Lorde Lounge",
+            "name": "Comet Pizza Parlor",
             "type": "JITSI",
-            "capacity": 666,
+            "capacity": 20,
             "muteRoom": false,
             "hideVideo": false,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/pride/PrideRoomE.png",
+            "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfcometpizzaparlor.png",
             "iframeOptions": {
-                "src": "https://youtube.com/embed/D6x1Jk8Hkuc"
+                "src": "https://www.youtube.com/embed/videoseries?list=PLVo0KZZdkRu0Dr0UjZLwHMSTbfidYdazc"
             },
-            "description": "It is not our differences that divide us. It is our inability to recognize, accept, and celebrate those differences.",
+            "description": "Let's go check out the basement!",
             "directions": {
                 "north": "foyer",
                 "west": "medium-lounge",
@@ -144,13 +144,13 @@
         },
         {
             "id": "small-1",
-            "name": "James Baldwin Salon",
+            "name": "Gunderson's Dungeon",
             "type": "JITSI",
             "capacity": 15,
             "muteRoom": false,
             "hideVideo": false,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/pride/PrideRoomCauseuse.png",
-            "description": "Not everything that is faced can be changed, but nothing can be changed until it is faced.",
+            "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfGundersondungeon2.jpeg",
+            "description": "Ted, just admit it.",
             "directions": {
                 "south": "small-2"
             },
@@ -167,13 +167,13 @@
         },
         {
             "id": "small-2",
-            "name": "Barbara Gittings Lounge",
+            "name": "The Rumor Lounge",
             "type": "JITSI",
             "muteRoom": false,
             "hideVideo": false,
             "capacity": 20,
-            "description": "Equality means more than passing laws. The struggle is really won in the hearts and minds of the community, where it really counts.",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/pride/PrideRoomBoudoir.png",
+            "description": "Where hearsay is admissible evidence.",
+            "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfrumorlounge.png",
             "imageMapOptions": "satanic-merch-map",
             "directions": {
                 "north": "small-1",
@@ -195,13 +195,13 @@
         },
         {
             "id": "small-3",
-            "name": "Christine Jorgensen Lounge",
-            "capacity": 10,
+            "name": "The Memory Lounge",
+            "capacity": 5,
             "muteRoom": false,
             "hideVideo": false,
-            "description": "The answer to the problem must not lie in sleeping pills and suicides that look like accidents, or in jail sentences, but rather in life and the freedom to live it.",
+            "description": "I am now no longer me. Fuck the ISSTD - Satanic Planet",
             "type": "JITSI",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/pride/PrideRoomA.png",
+            "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmemorylounge.png",
             "directions": {
                 "north": "small-2"
             },
@@ -218,13 +218,13 @@
         },
         {
             "id": "foyer",
-            "name": "Marsha P Johnson Foyer",
+            "name": "Illuminated Foyer",
             "type": "JITSI",
             "capacity": 50,
             "muteRoom": false,
             "hideVideo": false,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/pride/PrideRoomLounge.png",
-            "description": "Darling, I want my gay rights now.",
+            "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfIlluminatedfoyer.jpeg",
+            "description": "Welcome to the 2022 Virtual Grey Faction Conference! Select the map and calendar in the bottom left to explore Faction Hall.",
             "directions": {
                 "north": "rotunda",
                 "east": "library",
@@ -247,13 +247,16 @@
         },
         {
             "id": "medium-lounge",
-            "name": "Bayard Rustin Boudoir",
-            "type": "JITSI",
+            "name": "McMartin Chamber",
+            "type": "CHATSTREAM",
             "muteRoom": false,
             "hideVideo": false,
             "capacity": 10,
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/pride/PrideRoomStudy.png",
-            "description": "I believe in social dislocation and creative trouble.",
+            "iframeOptions": {
+            "src": "https://www.youtube.com/embed/_O0UgJgxI44"
+            },
+            "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmcmartinchamber.jpeg",
+            "description": "I am no longer whole. It's trauma based mind control. - Satanic Planet",
             "directions": {
                 "east": "large-lounge",
                 "west": "small-2"
@@ -297,13 +300,13 @@
             "capacity": 666,
             "muteRoom": false,
             "hideVideo": false,
-            "description": "Drink it all in.",
-            "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/pride/PrideRoomF.png",
+            "description": "Suck it.",
+            "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfAdrenochromeloungered.jpeg",
             "directions": {
                 "west": "large-lounge"
             },
             "iframeOptions": {
-                "src": "https://iframe.dacast.com/live/335563b1-f2ee-04b3-c63b-0a7d13f03b92/f7211aa5-999a-9586-26d5-d1ff15280df3"
+                "src": "https://iframe.dacast.com/live/335563b1-f2ee-04b3-c63b-0a7d13f03b92/83cea71b-fda0-4ea7-0d5c-636e2a0695a9"
             },
             "map": {
                 "x": 16,

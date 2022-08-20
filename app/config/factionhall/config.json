@@ -8,7 +8,7 @@
         "map": "Estate Map",
         "events": "Calendar of Events",
         "moderator": "Contact a Caretaker",
-        "poke": "Sing to Someone"
+        "poke": "Implant a False Memory"
     },
     "startRoom": "foyer",
     "videoDisplayName": "Guest",
@@ -21,10 +21,10 @@
     },
     "welcomePage": {
         "avatarSelectionEnabled": true,
-        "backgroundImagePath": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/pride/PrideRoomB.png",
+        "backgroundImagePath": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfcometpizzaparlor.png",
         "enterSpaceButtonText": "Enter",
-        "avatarSelectionText": "Identify Your Cabal",
-        "headerHtml": "<div class='tst'><p>Welcome to</p><h1>Satanic Pride!</h1>"
+        "avatarSelectionText": "Select Your Avatar",
+        "headerHtml": "<div class='tst'><p>Welcome</p><h1>Grey Faction Conference 2022 guests!</h1>"
     },
     "avatars": [
         {

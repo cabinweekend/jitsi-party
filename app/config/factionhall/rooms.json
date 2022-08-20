@@ -10,7 +10,7 @@
             "hideVideo": true,
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfstormauditorium.png",
             "iframeOptions": {
-                "src": "https://youtube.com/embed/ghJJlek8UJs"
+                "src": "https://www.youtube.com/embed/VrBSE11QtI4"
             },
             "description": "The Storm that never came.",
             "directions": {
@@ -38,7 +38,7 @@
             "hideVideo": true,
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfjudemirrahall.png",
             "iframeOptions": {
-                "src": "https://youtube.com/embed/8zGAysyWIiI"
+                "src": "https://www.youtube.com/embed/6cIuutdaUvo"
             },
             "description": "In Memoriam of the Victims of Conspiracy Therapists",
             "directions": {
@@ -58,7 +58,7 @@
         },
         {
             "id": "rotunda",
-            "name": "Tallmadge Rotunda",
+            "name": "Tallmadge Hall",
             "type": "CHATSTREAM",
             "capacity": 666,
             "doorTint": "#000000",
@@ -66,7 +66,7 @@
             "hideVideo": true,
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmichelletallmadgehall.png",
             "iframeOptions": {
-                "src": "https://youtube.com/embed/8ONdcDFUSHg"
+                "src": "https://www.youtube.com/embed/q0pC7kflt0M"
             },
             "description": "The complete lack of evidence proves everything!",
             "directions": {
@@ -114,14 +114,14 @@
         },
         {
             "id": "large-lounge",
-            "name": "Comet Pizza Parlor Lounge",
+            "name": "Comet Pizza Parlor",
             "type": "JITSI",
             "capacity": 20,
             "muteRoom": false,
             "hideVideo": false,
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfcometpizzaparlor.png",
             "iframeOptions": {
-                "src": "https://youtube.com/embed/D6x1Jk8Hkuc"
+                "src": "https://www.youtube.com/embed/videoseries?list=PLVo0KZZdkRu0Dr0UjZLwHMSTbfidYdazc"
             },
             "description": "Let's go check out the basement!",
             "directions": {
@@ -248,10 +248,13 @@
         {
             "id": "medium-lounge",
             "name": "McMartin Chamber",
-            "type": "JITSI",
+            "type": "CHATSTREAM",
             "muteRoom": false,
             "hideVideo": false,
             "capacity": 10,
+            "iframeOptions": {
+            "src": "https://www.youtube.com/embed/_O0UgJgxI44"
+            },
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmcmartinchamber.jpeg",
             "description": "I am no longer whole. It's trauma based mind control. - Satanic Planet",
             "directions": {
@@ -303,7 +306,7 @@
                 "west": "large-lounge"
             },
             "iframeOptions": {
-                "src": "https://iframe.dacast.com/live/335563b1-f2ee-04b3-c63b-0a7d13f03b92/f7211aa5-999a-9586-26d5-d1ff15280df3"
+                "src": "https://iframe.dacast.com/live/335563b1-f2ee-04b3-c63b-0a7d13f03b92/83cea71b-fda0-4ea7-0d5c-636e2a0695a9"
             },
             "map": {
                 "x": 16,

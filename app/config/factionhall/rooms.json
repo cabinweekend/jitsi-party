@@ -89,11 +89,10 @@
         {
             "id": "theater",
             "name": "MKULTRA Theater",
-            "type": "CHATSTREAM",
-            "capacity": 666,
-            "muteRoom": true,
-            "hideVideo": true,
-            "doorTint": "#000000",
+            "type": "JITSI",
+            "capacity": 15,
+            "muteRoom": false,
+            "hideVideo": false,
             "description": "Surprise LSD trip, anyone?",
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmkultratheater.jpeg",
             "iframeOptions": {
@@ -115,10 +114,11 @@
         {
             "id": "large-lounge",
             "name": "Comet Pizza Parlor",
-            "type": "JITSI",
-            "capacity": 20,
-            "muteRoom": false,
-            "hideVideo": false,
+            "type": "CHATSTREAM",
+            "capacity": 666,
+            "doorTint": "#000000",
+            "muteRoom": true,
+            "hideVideo": true,
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfcometpizzaparlor.png",
             "iframeOptions": {
                 "src": "https://www.youtube.com/embed/videoseries?list=PLVo0KZZdkRu0Dr0UjZLwHMSTbfidYdazc"

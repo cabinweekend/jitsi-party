@@ -2,7 +2,7 @@
     "rooms": [
         {
             "id": "auditorium",
-            "name": "Alan Turing Auditorium",
+            "name": "The Storm Auditorium",
             "type": "CHATSTREAM",
             "capacity": 666,
             "doorTint": "#000000",

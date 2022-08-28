@@ -2,7 +2,7 @@
     "rooms": [
         {
             "id": "auditorium",
-            "name": "The Storm Auditorium",
+            "name": "Ritual Memorial Hall",
             "type": "CHATSTREAM",
             "capacity": 666,
             "doorTint": "#000000",
@@ -10,9 +10,9 @@
             "hideVideo": true,
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfstormauditorium.png",
             "iframeOptions": {
-                "src": "https://www.youtube.com/embed/VrBSE11QtI4"
+                "src": "https://www.youtube.com/embed/j02TL_quk60"
             },
-            "description": "The Storm that never came.",
+            "description": "Home For The Fallen - These homes opened in the 1850s to provide short voluntary stays that included non-medical detoxification & moral reframing.",
             "directions": {
                 "east": "foyer",
                 "north": "hall"
@@ -30,7 +30,7 @@
         },
         {
             "id": "hall",
-            "name": "Jude Mirra Hall",
+            "name": "Training Annex",
             "type": "CHATSTREAM",
             "capacity": 666,
             "doorTint": "#000000",
@@ -38,9 +38,9 @@
             "hideVideo": true,
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfjudemirrahall.png",
             "iframeOptions": {
-                "src": "https://www.youtube.com/embed/6cIuutdaUvo"
+                "src": "https://www.youtube.com/embed/QwM5iBomLHM"
             },
-            "description": "In Memoriam of the Victims of Conspiracy Therapists",
+            "description": "Handsome Lake - A Seneca tribesman who created one of the first mutual support structures for alcohol recovery, called 'circles'.",
             "directions": {
                 "east": "rotunda",
                 "south": "auditorium"
@@ -58,7 +58,7 @@
         },
         {
             "id": "rotunda",
-            "name": "Tallmadge Hall",
+            "name": "Amphitheater",
             "type": "CHATSTREAM",
             "capacity": 666,
             "doorTint": "#000000",
@@ -66,9 +66,9 @@
             "hideVideo": true,
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmichelletallmadgehall.png",
             "iframeOptions": {
-                "src": "https://www.youtube.com/embed/q0pC7kflt0M"
+                "src": "https://www.youtube.com/embed/NEwod8NHZK8"
             },
-            "description": "The complete lack of evidence proves everything!",
+            "description": "Frederick Douglass - Condemned the way alcohol was used as a tool to degrade enslaved people. He took a pledge of abstinence in 1845.",
             "directions": {
                 "west": "hall",
                 "south": "foyer",
@@ -88,15 +88,16 @@
         },
         {
             "id": "theater",
-            "name": "MKULTRA Theater",
-            "type": "JITSI",
-            "capacity": 15,
-            "muteRoom": false,
-            "hideVideo": false,
-            "description": "Surprise LSD trip, anyone?",
+            "name": "Dance Hall",
+            "type": "CHATSTREAM",
+            "capacity": 666,
+            "doorTint": "#000000",
+            "muteRoom": true,
+            "hideVideo": true,
+            "description": "Pharmakeia - The power of witchcraft/sorcery manifested in drug addiction., sometimes referred to as the demon Pharmakeia.",
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmkultratheater.jpeg",
             "iframeOptions": {
-                "src": "https://youtube.com/embed/f40fV1wTyBc"
+                "src": "https://iframe.dacast.com/live/335563b1-f2ee-04b3-c63b-0a7d13f03b92/83cea71b-fda0-4ea7-0d5c-636e2a0695a9"
             },
             "directions": {
                 "west": "rotunda"
@@ -113,7 +114,7 @@
         },
         {
             "id": "large-lounge",
-            "name": "Comet Pizza Parlor",
+            "name": "Drawing Room",
             "type": "CHATSTREAM",
             "capacity": 666,
             "doorTint": "#000000",
@@ -121,9 +122,9 @@
             "hideVideo": true,
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfcometpizzaparlor.png",
             "iframeOptions": {
-                "src": "https://www.youtube.com/embed/videoseries?list=PLVo0KZZdkRu0Dr0UjZLwHMSTbfidYdazc"
+                "src": "https://www.youtube.com/embed/sTNQBOBxsxU"
             },
-            "description": "Let's go check out the basement!",
+            "description": "Dr. Lucy Hall - In 1888, served as the physician in charge of the Reformatory Prison in Sherborn, Massachusetts. She studied 204 'inebriate' women in her care, and found that more than one-third of the married women had been so beaten by their drunken husbands that they had scars on their heads.",
             "directions": {
                 "north": "foyer",
                 "west": "medium-lounge",
@@ -144,13 +145,13 @@
         },
         {
             "id": "small-1",
-            "name": "Gunderson's Dungeon",
+            "name": "Parlor",
             "type": "JITSI",
-            "capacity": 15,
+            "capacity": 60,
             "muteRoom": false,
             "hideVideo": false,
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfGundersondungeon2.jpeg",
-            "description": "Ted, just admit it.",
+            "description": "Dr. Ruth Fox and Dr. Vernelle Fox - Pioneered new approaches to the treatment of alcoholism and helped organize what would become the American Society of Addiction Medicine.",
             "directions": {
                 "south": "small-2"
             },
@@ -167,12 +168,12 @@
         },
         {
             "id": "small-2",
-            "name": "The Rumor Lounge",
+            "name": "Study",
             "type": "JITSI",
             "muteRoom": false,
             "hideVideo": false,
-            "capacity": 20,
-            "description": "Where hearsay is admissible evidence.",
+            "capacity": 60,
+            "description": "Peter Bell - Was an early advocate for addressing the special needs of African Americans within addiction treatment in the United States and co-founded the Institute on Black Chemical Abuse.",
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfrumorlounge.png",
             "imageMapOptions": "satanic-merch-map",
             "directions": {
@@ -195,11 +196,11 @@
         },
         {
             "id": "small-3",
-            "name": "The Memory Lounge",
-            "capacity": 5,
+            "name": "Snuggery",
+            "capacity": 60,
             "muteRoom": false,
             "hideVideo": false,
-            "description": "I am now no longer me. Fuck the ISSTD - Satanic Planet",
+            "description": "Come join us in our safe and and cozy space",
             "type": "JITSI",
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmemorylounge.png",
             "directions": {
@@ -218,13 +219,13 @@
         },
         {
             "id": "foyer",
-            "name": "Illuminated Foyer",
+            "name": "Antechamber",
             "type": "JITSI",
-            "capacity": 50,
+            "capacity": 60,
             "muteRoom": false,
             "hideVideo": false,
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfIlluminatedfoyer.jpeg",
-            "description": "Welcome to the 2022 Virtual Grey Faction Conference! Select the map and calendar in the bottom left to explore Faction Hall.",
+            "description": "Welcome to The International Overdose Awareness Day Memorial Event! Select the map and calendar in the bottom left to explore Faction Hall.",
             "directions": {
                 "north": "rotunda",
                 "east": "library",
@@ -247,16 +248,17 @@
         },
         {
             "id": "medium-lounge",
-            "name": "McMartin Chamber",
-            "type": "CHATSTREAM",
+            "name": "Sitting Room",
+            "type": "JITSI",
+            "capacity": 60,
             "muteRoom": false,
             "hideVideo": false,
-            "capacity": 10,
+            "capacity": 60,
             "iframeOptions": {
             "src": "https://www.youtube.com/embed/_O0UgJgxI44"
             },
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmcmartinchamber.jpeg",
-            "description": "I am no longer whole. It's trauma based mind control. - Satanic Planet",
+            "description": "A great place to enjoy a cup of coffee while chatting the night away.",
             "directions": {
                 "east": "large-lounge",
                 "west": "small-2"
@@ -295,12 +297,14 @@
         },
         {
             "id": "lounge",
-            "name": "Adrenochrome Lounge",
+            "name": "Lounge",
             "type": "CHATSTREAM",
-            "capacity": 666,
+            "type": "JITSI",
+            "capacity": 60,
             "muteRoom": false,
             "hideVideo": false,
-            "description": "Suck it.",
+            "capacity": 60,
+            "description": "Come join us in the Lounge.",
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfAdrenochromeloungered.jpeg",
             "directions": {
                 "west": "large-lounge"

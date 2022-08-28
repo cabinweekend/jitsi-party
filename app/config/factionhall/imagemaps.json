@@ -81,7 +81,7 @@
         },
         {
             "id": "satanic-library-map",
-            "img": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfLibrary.jpeg",
+            "img": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/library.jpg",
             "areas": [
                 {
                     "shape": "poly",

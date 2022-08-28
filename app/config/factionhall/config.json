@@ -8,7 +8,7 @@
         "map": "Estate Map",
         "events": "Calendar of Events",
         "moderator": "Contact a Caretaker",
-        "poke": "Implant a False Memory"
+        "poke": "Reach out to a friend"
     },
     "startRoom": "foyer",
     "videoDisplayName": "Guest",
@@ -21,10 +21,10 @@
     },
     "welcomePage": {
         "avatarSelectionEnabled": true,
-        "backgroundImagePath": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfcometpizzaparlor.png",
+        "backgroundImagePath": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/Sober+Faction+2022/SF+WELCOME.jpeg",
         "enterSpaceButtonText": "Enter",
         "avatarSelectionText": "Select Your Avatar",
-        "headerHtml": "<div class='tst'><p>Welcome</p><h1>Grey Faction Conference 2022 guests!</h1>"
+        "headerHtml": "<div class='tst'><p>Welcome</p><h1>The Satanic Temple Sober Faction International Overdose Awareness Day Memorial Event 2022 guests!</h1>"
     },
     "avatars": [
         {

@@ -11,7 +11,7 @@
         {
             "name": "Naloxone Training",
             "description": "Minister Kal Set & Director of Sober Faction Outreach, Keleigh Rose, will host a Naloxone Training.",
-            "room": "jude-mirra",
+            "room": "hall",
             "start": "2022-08-31T21:00:00-04:00",
             "end": "2022-08-31T22:00:00-04:00",
             "image": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/Sober+Faction+2022/SF+CALENDAR.jpeg"
@@ -27,7 +27,7 @@
         {
             "name": "Musical Performance",
             "description": "The event will close with musical entertainment to inspire action & change.",
-            "room": "michelle-tallmadge",
+            "room": "rotunda",
             "start": "2022-08-31T20:00:00-04:00",
             "end": "2022-08-31T20:00:00-04:00",
             "image": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/Sober+Faction+2022/SF+CALENDAR.jpeg" 
@@ -35,7 +35,7 @@
         {
             "name": "Whimsical Blasphemy with DJ Mercy Maelica",
             "description": "Join Mercy, our veteran performer and Resident DJ for music and videos live from Salem.",
-            "room": "mkultra",
+            "room": "theater",
             "start": "2022-08-31T20:00:00-04:00",
             "end": "2022-08-31T00:00:00-04:00",
             "image": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/Sober+Faction+2022/SF+CALENDAR.jpeg"

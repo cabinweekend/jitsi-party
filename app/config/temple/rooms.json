@@ -252,7 +252,7 @@
         "description": "Timelessness coalesces above the pews set out before you. Gather and be heard.",
         "type": "CHATSTREAM",
         "iframeOptions": {
-          "src": "ttps://www.youtube.com/embed/BhF7YnLweQA"
+          "src": "https://www.youtube.com/embed/BhF7YnLweQA"
         },
         "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/temple/TempleRoom8.png",
         "directions": {

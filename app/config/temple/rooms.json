@@ -246,9 +246,11 @@
       {
         "id": "sanctuary",
         "name": "The Sanctuary",
-        "capacity": 666,
-        "muteRoom": true,
-        "hideVideo": true,
+        "type": "CHATSTREAM",
+        "capacity": 300,
+        "doorTint": "#000000",
+        "muteRoom": false,
+        "hideVideo": false,
         "description": "Timelessness coalesces above the pews set out before you. Gather and be heard.",
         "type": "CHATSTREAM",
         "iframeOptions": {

@@ -94,7 +94,7 @@
             "doorTint": "#000000",
             "muteRoom": true,
             "hideVideo": true,
-            "description": "Pharmakeia - The power of witchcraft/sorcery manifested in drug addiction., sometimes referred to as the demon Pharmakeia.",
+            "description": "Pharmakeia - The power of witchcraft/sorcery manifested in drug addiction, sometimes referred to as the demon Pharmakeia.",
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmkultratheater.jpeg",
             "iframeOptions": {
                 "src": "https://iframe.dacast.com/live/335563b1-f2ee-04b3-c63b-0a7d13f03b92/83cea71b-fda0-4ea7-0d5c-636e2a0695a9"
@@ -200,7 +200,7 @@
             "capacity": 60,
             "muteRoom": false,
             "hideVideo": false,
-            "description": "Come join us in our safe and and cozy space",
+            "description": "Narcotic Farm - The Narcotic Farm was a government-funded prison, rehabilitative center, and research center in Lexington, Kentucky between 1935 and 1974. Its mission was to understand drug addiction and find a permanent cure. Nearly 90% returned to drug use upon leaving.",
             "type": "JITSI",
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmemorylounge.png",
             "directions": {
@@ -258,7 +258,7 @@
             "src": "https://www.youtube.com/embed/_O0UgJgxI44"
             },
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfmcmartinchamber.jpeg",
-            "description": "A great place to enjoy a cup of coffee while chatting the night away.",
+            "description": "Around 75% of people seeking recovery from a substance use problem achieve their goal.",
             "directions": {
                 "east": "large-lounge",
                 "west": "small-2"
@@ -304,7 +304,7 @@
             "muteRoom": false,
             "hideVideo": false,
             "capacity": 60,
-            "description": "Come join us in the Lounge.",
+            "description": "80% of people who had overcome an alcohol or other drug problem accomplished at least one major achievement associated with self-improvement and family engagement since overcoming a substance use problem — things like getting a new job, completing a university degree, or volunteering.",
             "backgroundImage": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfAdrenochromeloungered.jpeg",
             "directions": {
                 "west": "large-lounge"

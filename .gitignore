@@ -171,3 +171,4 @@ app/jitsi/schema/*pb2.py
 **/*.terraform
 **/terraform.tfstate*
 **/.tfplan
+/terraform/**/builds/**

@@ -5,119 +5,67 @@
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
-resource "aws_sqs_queue" "this" {
-  content_based_deduplication = true
-  fifo_queue                  = true
-  name                        = "${var.name}-inbound-queue.fifo"
-  sqs_managed_sse_enabled     = true
-  tags                        = var.tags
-}
+resource "aws_apigatewayv2_api" "current" {
+  description   = "Shopify webhook API"
+  name          = var.name
+  protocol_type = "HTTP"
 
-
-# TODO: move to bootstrap: must be set up once per region.
-resource "aws_api_gateway_account" "this" {
-  cloudwatch_role_arn = aws_iam_role.cloudwatch.arn
-}
-
-resource "aws_api_gateway_rest_api" "this" {
-  name = "${var.name}-apig"
-}
-
-resource "aws_api_gateway_resource" "webhook_resource" {
-  path_part   = "webhook"
-  parent_id   = aws_api_gateway_rest_api.this.root_resource_id
-  rest_api_id = aws_api_gateway_rest_api.this.id
-}
-
-resource "aws_api_gateway_resource" "webhook_shopify_resource" {
-  path_part   = "shopify"
-  parent_id   = aws_api_gateway_resource.webhook_resource.id
-  rest_api_id = aws_api_gateway_rest_api.this.id
-}
-
-resource "aws_api_gateway_method" "webhook_shopify_post_method" {
-  rest_api_id   = aws_api_gateway_rest_api.this.id
-  resource_id   = aws_api_gateway_resource.webhook_shopify_resource.id
-  http_method   = "POST"
-  authorization = "NONE"
-}
-
-resource "aws_api_gateway_method_settings" "webhook_shopify_post_method_settings" {
-  rest_api_id = aws_api_gateway_rest_api.this.id
-  stage_name  = aws_api_gateway_stage.this.stage_name
-  method_path = "${aws_api_gateway_resource.webhook_shopify_resource.path_part}/${aws_api_gateway_method.webhook_shopify_post_method.http_method}"
-
-  settings {
-    metrics_enabled = true
-    logging_level   = "INFO"
+  cors_configuration {
+    allow_credentials = false
+    allow_headers     = []
+    allow_methods     = ["POST", ]
+    allow_origins     = ["*", ]
+    expose_headers    = []
+    max_age           = 0
   }
 }
 
-resource "aws_api_gateway_integration" "this" { #TODO: review
-  rest_api_id             = aws_api_gateway_rest_api.this.id
-  resource_id             = aws_api_gateway_resource.webhook_shopify_resource.id
-  http_method             = aws_api_gateway_method.webhook_shopify_post_method.http_method
-  integration_http_method = "POST"
-  type                    = "AWS"
-  credentials             = aws_iam_role.apig-sqs-send-msg-role.arn
-  uri                     = "arn:aws:apigateway:${data.aws_region.current.name}:sqs:path/${data.aws_caller_identity.current.account_id}/${aws_sqs_queue.this.name}"
+resource "aws_apigatewayv2_stage" "default" {
+  api_id      = aws_apigatewayv2_api.current.id
+  auto_deploy = true
+  depends_on  = [aws_cloudwatch_log_group.current]
+  name        = "$default"
 
-  request_parameters = {
-    "integration.request.header.Content-Type" = "'application/x-www-form-urlencoded'"
-  }
+  access_log_settings {
+    destination_arn = aws_cloudwatch_log_group.current.arn
 
-  request_templates = {
-    # NOTE: For the SQS FIFO queue to work porperly, template needs to provide
-    # request parameters Action, MessageGroupId, and MessageBody.
-    "application/json" = "Action=SendMessage&MessageGroupId=1&MessageBody=${file("${path.module}/request_template.json")}"
-  }
-  passthrough_behavior = "WHEN_NO_TEMPLATES" # TODO: Consider setting to «NEVER»
-}
-
-# NOTE: method response and integration are used to always return 200.  This
-# will prevent Shopify API to automatically unsubscribe webhooks.  See [1] and
-# [2].
-#
-# [1] https://shopify.dev/apps/webhooks/best-practices#respond-quickly
-# [2] https://shopify.dev/apps/webhooks/configuration/https#step-6-respond-to-the-webhook
-resource "aws_api_gateway_method_response" "webhook_shopify_post_method_response_200" {
-  rest_api_id = aws_api_gateway_rest_api.this.id
-  resource_id = aws_api_gateway_resource.webhook_shopify_resource.id
-  http_method = aws_api_gateway_method.webhook_shopify_post_method.http_method
-  status_code = "200"
-}
-
-resource "aws_api_gateway_integration_response" "webhook_shopify_post_integration_response_200" {
-  rest_api_id = aws_api_gateway_rest_api.this.id
-  resource_id = aws_api_gateway_resource.webhook_shopify_resource.id
-  http_method = aws_api_gateway_method.webhook_shopify_post_method.http_method
-  status_code = aws_api_gateway_method_response.webhook_shopify_post_method_response_200.status_code
-}
-
-
-resource "aws_api_gateway_deployment" "this" {
-  rest_api_id = aws_api_gateway_rest_api.this.id
-
-  triggers = {
-    redeployment = sha1(jsonencode([
-      aws_api_gateway_resource.webhook_shopify_resource.id,
-      aws_api_gateway_method.webhook_shopify_post_method.id,
-      aws_api_gateway_integration.this.id,
-    ]))
-  }
-
-  lifecycle {
-    create_before_destroy = true
+    format = jsonencode({
+      httpMethod              = "$context.httpMethod"
+      integrationErrorMessage = "$context.integrationErrorMessage"
+      protocol                = "$context.protocol"
+      requestId               = "$context.requestId"
+      requestTime             = "$context.requestTime"
+      resourcePath            = "$context.resourcePath"
+      responseLength          = "$context.responseLength"
+      routeKey                = "$context.routeKey"
+      sourceIp                = "$context.identity.sourceIp"
+      status                  = "$context.status"
+      }
+    )
   }
 }
 
-resource "aws_api_gateway_stage" "this" {
-  deployment_id = aws_api_gateway_deployment.this.id
-  rest_api_id   = aws_api_gateway_rest_api.this.id
-  stage_name    = "dev" # FIXME: hardcoded value
+resource "aws_apigatewayv2_integration" "current" {
+  api_id           = aws_apigatewayv2_api.current.id
+  integration_type = "AWS_PROXY"
+  integration_uri  = var.lambda_arn
 }
 
-resource "aws_cloudwatch_log_group" "webhook_shopify_log_group" {
-  name              = "APIG-Execution-Logs_${aws_api_gateway_rest_api.this.name}"
-  retention_in_days = 30
+resource "aws_apigatewayv2_route" "current" {
+  api_id    = aws_apigatewayv2_api.current.id
+  route_key = "POST /webhook"
+  target    = "integrations/${aws_apigatewayv2_integration.current.id}"
+}
+
+resource "aws_cloudwatch_log_group" "current" {
+  name              = "/aws/api_gw/${aws_apigatewayv2_api.current.name}"
+  retention_in_days = 90
+}
+
+resource "aws_lambda_permission" "api_gw" {
+  action        = "lambda:InvokeFunction"
+  function_name = var.lambda_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_apigatewayv2_api.current.execution_arn}/*/*"
+  statement_id  = "AllowExecutionFromAPIGateway"
 }

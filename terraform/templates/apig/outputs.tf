@@ -2,6 +2,6 @@
 # API Gateway template
 #
 
-output "queue_arn" {
-  value = aws_sqs_queue.this.arn
+output "arn" {
+  value = aws_apigatewayv2_api.current.execution_arn
 }

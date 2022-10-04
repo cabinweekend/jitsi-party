@@ -2,6 +2,9 @@
 # Pre-prod environment «dev»
 #
 
+data "aws_caller_identity" "current" {}
+data "aws_region" "current" {}
+
 module "validate-and-enqueue" {
   attach_network_policy                   = true
   attach_policy_statements                = false
@@ -54,7 +57,7 @@ module "sqs" {
 module "authbot" {
   attach_network_policy                   = false
   attach_policies                         = true
-  attach_policy_statements                = false
+  attach_policy_statements                = true
   create_current_version_allowed_triggers = false
   description                             = "Auth Bot"
   function_name                           = "AuthBot"
@@ -84,6 +87,17 @@ module "authbot" {
     sqs = {
       event_source_arn        = module.sqs.arn
       function_response_types = ["ReportBatchItemFailures"]
+    }
+  }
+
+  policy_statements = {
+    cognito_idp = {
+      effect = "Allow"
+      actions = [
+        "cognito-idp:AdminAddUserToGroup",
+        "cognito-idp:AdminCreateUser",
+      ]
+      resources = ["arn:aws:cognito-idp:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:userpool/${var.cognito_user_pool_id}"]
     }
   }
 }

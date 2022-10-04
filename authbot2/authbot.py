@@ -37,17 +37,26 @@ SYNC_MAP = {
 # FIXME: Use secret manager instead
 AWS_COGNITO_USER_POOL_ID = os.environ.get("AWS_COGNITO_USER_POOL_ID")
 SHOPIFY_API_VERSION = "2022-07"
-SHOPIFY_KEY = os.environ.get("SHOPIFY_KEY")
-SHOPIFY_PASS = os.environ.get("SHOPIFY_PASS")
-SHOPIFY_SHOP_URL = "tstvhq.myshopify.com"
-SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
+SHOPIFY_KEY_ARN = os.environ.get("SHOPIFY_KEY_ARN")
+SHOPIFY_PASS_ARN = os.environ.get("SHOPIFY_PASS_ARN")
+SHOPIFY_SHOP_URL = os.environ.get("SHOPIFY_SHOP_URL")
+SLACK_BOT_TOKEN_ARN = os.environ.get("SLACK_BOT_TOKEN_ARN")
 
 def generate_temporary_password() -> str:
     return "".join(random.choice(string.ascii_letters) for _ in range(20)) + "".join(
         random.choice(string.digits) for _ in range(3)
     )
 
+def get_secret(client, arn):
+    response = client.get_secret_value(SecretId=arn)
+    return response["SecretString"]
+
 def lambda_handler(event, context):
+    # smclient = boto3.client('secretsmanager')
+    # shopify_key = get_secret(smclient, SHOPIFY_KEY_ARN)
+    # shopify_pass = get_secret(smclient, SHOPIFY_PASS_ARN)
+    # slack_bot_token = get_secret(smclient, SLACK_BOT_TOKEN_ARN)
+
     users = defaultdict(set)
 
     for record in event.get("Records"):

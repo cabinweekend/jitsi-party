@@ -5,10 +5,25 @@
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
+locals {
+  secrets = {
+    shopify_api_shared_secret = var.shopify_api_shared_secret
+    shopify_key               = var.shopify_key
+    shopify_pass              = var.shopify_pass
+  }
+}
+
+module "secrets" {
+  for_each = local.secrets
+  name     = "${local.context}-${local.env}-${each.key}"
+  source   = "../../../modules/secret"
+  tags     = local.tags
+  value    = each.value
+}
+
 module "validate-and-enqueue" {
   attach_network_policy                   = true
-  attach_policy_statements                = false
-  attach_policy_json                      = true
+  attach_policy_statements                = true
   create_current_version_allowed_triggers = false
   description                             = "Validate and enqueue Shopify order"
   function_name                           = "validate-and-enqueue"
@@ -27,18 +42,22 @@ module "validate-and-enqueue" {
   }
 
   environment_variables = {
-    API_SHARED_SECRET = var.shopify_api_shared_secret
-    SQS_QUEUE_URL     = module.sqs.url
+    API_SHARED_SECRET_ARN = module.secrets["shopify_api_shared_secret"].arn
+    SQS_QUEUE_URL         = module.sqs.url
   }
 
-  policy_json = jsonencode({
-    Version = "2012-10-17",
-    Statement = [{
-      Effect   = "Allow",
-      Action   = ["sqs:SendMessage"],
-      Resource = [module.sqs.arn]
-    }]
-  })
+  policy_statements = {
+    secrets = {
+      actions   = ["secretsmanager:GetSecretValue"]
+      effect    = "Allow"
+      resources = [module.secrets["shopify_api_shared_secret"].arn, ]
+    }
+    sqs = {
+      actions   = ["sqs:SendMessage"]
+      effect    = "Allow"
+      resources = [module.sqs.arn, ]
+    }
+  }
 }
 
 module "apig" {
@@ -79,8 +98,9 @@ module "authbot" {
 
   environment_variables = {
     AWS_COGNITO_USER_POOL_ID = var.cognito_user_pool_id
-    SHOPIFY_KEY              = var.shopify_key
-    SHOPIFY_PASS             = var.shopify_pass
+    SHOPIFY_KEY_ARN          = module.secrets["shopify_key"].arn
+    SHOPIFY_PASS_ARN         = module.secrets["shopify_pass"].arn
+    SHOPIFY_SHOP_URL         = var.shopify_shop_url
   }
 
   event_source_mapping = {
@@ -90,14 +110,20 @@ module "authbot" {
     }
   }
 
+  # secretsmanager:GetSecretValue
+  # arn:aws:secretsmanager:us-east-2:241532693788:secret:preprod-dev-shopify_api_shared_secret-5yIHhd
+
   policy_statements = {
     cognito_idp = {
-      effect = "Allow"
-      actions = [
-        "cognito-idp:AdminAddUserToGroup",
-        "cognito-idp:AdminCreateUser",
-      ]
+      actions   = ["cognito-idp:AdminAddUserToGroup", "cognito-idp:AdminCreateUser", ]
+      effect    = "Allow"
       resources = ["arn:aws:cognito-idp:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:userpool/${var.cognito_user_pool_id}"]
+    }
+
+    secrets = {
+      actions   = ["secretsmanager:GetSecretValue"]
+      effect    = "Allow"
+      resources = [module.secrets["shopify_key"].arn, module.secrets["shopify_pass"].arn]
     }
   }
 }

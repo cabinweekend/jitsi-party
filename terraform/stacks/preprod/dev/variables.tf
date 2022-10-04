@@ -24,3 +24,8 @@ variable "shopify_pass" {
   sensitive   = true
   type        = string
 }
+
+variable "shopify_shop_url" {
+  description = "Shopify Shop URL"
+  type        = string
+}

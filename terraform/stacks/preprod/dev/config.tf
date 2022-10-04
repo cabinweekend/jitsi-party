@@ -3,8 +3,11 @@
 #
 
 locals {
+  context = "preprod"
+  env     = "dev"
+
   tags = {
-    Context     = "preprod"
-    Environment = "dev"
+    Context     = local.context
+    Environment = local.env
   }
 }

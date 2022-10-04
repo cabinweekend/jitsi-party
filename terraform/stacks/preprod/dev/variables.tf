@@ -9,15 +9,18 @@ variable "cognito_user_pool_id" {
 
 variable "shopify_api_shared_secret" {
   description = "Shopify API shared secret"
+  sensitive   = true
   type        = string
 }
 
 variable "shopify_key" {
   description = "Shopify API Key"
+  sensitive   = true
   type        = string
 }
 
 variable "shopify_pass" {
   description = "Shopify API Pass"
+  sensitive   = true
   type        = string
 }

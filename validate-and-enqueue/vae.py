@@ -29,9 +29,9 @@ def lambda_handler(event, context):
     data = event.get("body")
     headers = event.get("headers")
     if event.get("isBase64Encoded"):
-        data = base64.b64decode(data)
+        data = base64.b64decode(data).decode('utf-8')
 
-    digest = hmac.new(api_secret.encode('utf-8'), data, digestmod=hashlib.sha256).digest()
+    digest = hmac.new(api_secret.encode('utf-8'), data.encode('utf-8'), digestmod=hashlib.sha256).digest()
     computed_hmac = base64.b64encode(digest)
     hmac_header = headers.get('X-Shopify-Hmac-Sha256')
 
@@ -41,7 +41,7 @@ def lambda_handler(event, context):
 
     sqs = boto3.client('sqs')
     response = sqs.send_message(
-        MessageBody=data.decode('utf-8'),
+        MessageBody=data,
         MessageGroupId="1",
         MessageDeduplicationId=str(uuid.uuid4()),
         QueueUrl=SQS_QUEUE_URL,

@@ -22,13 +22,11 @@ module "secrets" {
 }
 
 module "validate-and-enqueue" {
-  attach_network_policy                   = true
   attach_policy_statements                = true
   create_current_version_allowed_triggers = false
   description                             = "Validate and enqueue Shopify order"
   function_name                           = "validate-and-enqueue"
   handler                                 = "vae.lambda_handler"
-  number_of_policies                      = 1
   runtime                                 = "python3.9"
   source                                  = "terraform-aws-modules/lambda/aws" # FIXME: this must be pinned to a release tag or commit hash
   source_path                             = "../../../../validate-and-enqueue"
@@ -74,7 +72,6 @@ module "sqs" {
 }
 
 module "authbot" {
-  attach_network_policy                   = false
   attach_policies                         = true
   attach_policy_statements                = true
   create_current_version_allowed_triggers = false
@@ -87,7 +84,7 @@ module "authbot" {
   source                                  = "terraform-aws-modules/lambda/aws" # FIXME: this must be pinned to a release tag or commit hash
   source_path                             = "../../../../authbot2"
   tags                                    = local.tags
-  timeout                                 = "120"
+  timeout                                 = "30"
 
   allowed_triggers = {
     sqs = {
@@ -109,9 +106,6 @@ module "authbot" {
       function_response_types = ["ReportBatchItemFailures"]
     }
   }
-
-  # secretsmanager:GetSecretValue
-  # arn:aws:secretsmanager:us-east-2:241532693788:secret:preprod-dev-shopify_api_shared_secret-5yIHhd
 
   policy_statements = {
     cognito_idp = {

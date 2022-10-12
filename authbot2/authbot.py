@@ -42,42 +42,85 @@ SHOPIFY_PASS_ARN = os.environ.get("SHOPIFY_PASS_ARN")
 SHOPIFY_SHOP_URL = os.environ.get("SHOPIFY_SHOP_URL")
 SLACK_BOT_TOKEN_ARN = os.environ.get("SLACK_BOT_TOKEN_ARN")
 
+FULFILLMENT_QUERY = '''
+mutation fulfillmentCreateV2($fulfillment: FulfillmentV2Input!) {
+  fulfillmentCreateV2(fulfillment: $fulfillment) {
+    fulfillment {
+      id
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}'''
+
 def generate_temporary_password() -> str:
     return "".join(random.choice(string.ascii_letters) for _ in range(20)) + "".join(
         random.choice(string.digits) for _ in range(3)
     )
+
+def fulfill_order(fulfillment_order_id, fulfillment_order_line_item_ids):
+    query = '''
+    mutation fulfillmentCreateV2($fulfillment: FulfillmentV2Input!) {
+      fulfillmentCreateV2(fulfillment: $fulfillment) {
+        fulfillment {
+          id
+        }
+        userErrors {
+          field
+          message
+        }
+      }
+    }'''
+
+    shopify.GraphQL().execute(query=query,
+                              variables={'fulfillment': {
+                                  'lineItemsByFulfillmentOrder': [{
+                                      'fulfillmentOrderId': "gid://shopify/FulfillmentOrder/6048093339901",
+                                      'fulfillmentOrderLineItems': [{
+                                          'id': "gid://shopify/FulfillmentOrderLineItem/12795399176445",
+                                          'quantity': 1
+                                      }]
+                                  }]
+                              }})
+
 
 def get_secret(client, arn):
     response = client.get_secret_value(SecretId=arn)
     return response["SecretString"]
 
 def lambda_handler(event, context):
-    # smclient = boto3.client('secretsmanager')
-    # shopify_key = get_secret(smclient, SHOPIFY_KEY_ARN)
-    # shopify_pass = get_secret(smclient, SHOPIFY_PASS_ARN)
+    smclient = boto3.client('secretsmanager')
     # slack_bot_token = get_secret(smclient, SLACK_BOT_TOKEN_ARN)
 
     users = defaultdict(set)
+    fulfillments = defaultdict(set)
 
-    for record in event.get("Records"):
+    # Extract user groups from the order
+    for record in event.get("Records", []):
         order = json.loads(record["body"])
-        order = order["order"]
         logger.info(f"Processing order ID {order['id']}")
-        customer_email = order["customer"]["email"]
+        customer_email = order.get("customer", {}).get("email")
         if not customer_email:
-            log.warn(f"Oder {order['id']} doesn't have customer email!")
+            logger.warn(f"Oder {order['id']} doesn't have customer email!")
             continue
 
-        for product in order["line_items"]:
-            if SYNC_MAP.get(product['product_id']):
-                users[customer_email].add(SYNC_MAP[product['product_id']])
+        for item in order.get("line_items", []):
+            if SYNC_MAP.get(item['product_id']):
+                users[customer_email].add(SYNC_MAP[item['product_id']])
+                fulfillments[order['id']].add(item['id'])
 
-    client = boto3.client("cognito-idp")
+    if len(users.keys()) < 1:
+        # Nothing left to do
+        return
+
+    cognito_client = boto3.client("cognito-idp")
     for user, groups in users.items():
         if len(groups) > 0:
             try:
                 logger.info(f"Creating user {user}")
-                client.admin_create_user(
+                cognito_client.admin_create_user(
                     UserPoolId=AWS_COGNITO_USER_POOL_ID,
                     Username=user,
                     UserAttributes=[
@@ -89,14 +132,33 @@ def lambda_handler(event, context):
                 )
             except ClientError as error:
                 if error.response['Error']['Code'] == 'UsernameExistsException':
-                    logger.warn(f"User {user} already exists")
+                    logger.info(f"User {user} already exists")
                 else:
                     raise error
 
             for group in groups:
                 logger.info(f"Adding {user} to {group}")
-                client.admin_add_user_to_group(
+                cognito_client.admin_add_user_to_group(
                     UserPoolId=AWS_COGNITO_USER_POOL_ID,
                     Username=user,
                     GroupName=group,
                 )
+
+    shopify_pass = get_secret(smclient, SHOPIFY_PASS_ARN)
+    shopify_session = shopify.Session(SHOPIFY_SHOP_URL, SHOPIFY_API_VERSION, shopify_pass)
+    shopify.ShopifyResource.activate_session(shopify_session)
+    for order_id, line_items in fulfillments.items():
+        for fulfillment_order in shopify.FulfillmentOrders().find(order_id=order_id):
+            items = [{'id': f"gid://shopify/FulfillmentOrderLineItem/{item.id}",'quantity': 1}
+                     for item in filter(lambda x: x.line_item_id in line_items, fulfillment_order.line_items)]
+            if len(items) < 1:
+                continue
+
+            shopify.GraphQL().execute(query=FULFILLMENT_QUERY,
+                                      variables={'fulfillment': {
+                                          'lineItemsByFulfillmentOrder': [{
+                                              'fulfillmentOrderId': f"gid://shopify/FulfillmentOrder/{fulfillment_order.id}",
+                                              'fulfillmentOrderLineItems': items
+                                          }]
+                                      }})
+    shopify.ShopifyResource.clear_session()

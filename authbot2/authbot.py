@@ -37,10 +37,8 @@ SYNC_MAP = {
 # FIXME: Use secret manager instead
 AWS_COGNITO_USER_POOL_ID = os.environ.get("AWS_COGNITO_USER_POOL_ID")
 SHOPIFY_API_VERSION = "2022-07"
-SHOPIFY_KEY_ARN = os.environ.get("SHOPIFY_KEY_ARN")
 SHOPIFY_PASS_ARN = os.environ.get("SHOPIFY_PASS_ARN")
 SHOPIFY_SHOP_URL = os.environ.get("SHOPIFY_SHOP_URL")
-SLACK_BOT_TOKEN_ARN = os.environ.get("SLACK_BOT_TOKEN_ARN")
 
 FULFILLMENT_QUERY = '''
 mutation fulfillmentCreateV2($fulfillment: FulfillmentV2Input!) {
@@ -91,11 +89,9 @@ def get_secret(client, arn):
     return response["SecretString"]
 
 def lambda_handler(event, context):
-    smclient = boto3.client('secretsmanager')
-    # slack_bot_token = get_secret(smclient, SLACK_BOT_TOKEN_ARN)
-
-    users = defaultdict(set)
     fulfillments = defaultdict(set)
+    smclient = boto3.client('secretsmanager')
+    users = defaultdict(set)
 
     # Extract user groups from the order
     for record in event.get("Records", []):

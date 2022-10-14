@@ -169,6 +169,7 @@ app/jitsi/schema/*pb2.py
 
 # Terraform
 **/*.terraform
-**/terraform.tfstate*
+**/*.tfvars
 **/.tfplan
+**/terraform.tfstate*
 /terraform/**/builds/**

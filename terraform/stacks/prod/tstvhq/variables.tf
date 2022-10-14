@@ -1,5 +1,5 @@
 #
-# Pre-prod environment «dev»
+# Production environment for tstvhq.myshopify.com
 #
 
 variable "cognito_user_pool_id" {

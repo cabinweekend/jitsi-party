@@ -10,7 +10,6 @@ import hashlib
 import hmac
 import logging
 import os
-import uuid
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -43,7 +42,6 @@ def lambda_handler(event, context):
     response = sqs.send_message(
         MessageBody=data,
         MessageGroupId="1",
-        MessageDeduplicationId=str(uuid.uuid4()),
         QueueUrl=SQS_QUEUE_URL,
     )
 

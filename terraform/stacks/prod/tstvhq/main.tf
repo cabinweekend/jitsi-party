@@ -1,5 +1,5 @@
 #
-# Pre-prod environment «dev»
+# Production environment for tstvhq.myshopify.com
 #
 
 data "aws_caller_identity" "current" {}

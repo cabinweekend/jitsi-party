@@ -30,7 +30,7 @@ ${local.populate_secrets}
 And finally, register the Webhook:
 
 $ curl -d '${jsonencode(local.webhook_payload)}' \
--X POST "${var.shopify_shop_url}/admin/api/2022-07/webhooks.json" \
+-X POST "https://${var.shopify_shop_url}/admin/api/2022-07/webhooks.json" \
 -H "X-Shopify-Access-Token: $${shopify_pass}" \
 -H "Content-Type: application/json"
 

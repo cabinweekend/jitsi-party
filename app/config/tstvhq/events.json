@@ -1,44 +1,52 @@
 {
     "events": [
         {
-            "name": "Campaign Spotlight: SatanCon 2023 Unveiling",
-            "description": "Join SatanCon’s organizing committee unveils plans for SatanCon 2023 with Chalice Blythe and Karl Kasarda.",
+            "name": "Campaign Spotlight: After School Satan Club",
+            "description": "Join ASSC Campaign Director June Everett as we discuss everything After School Satan Club! A brief history, current and future updates, volunteer requirements, and a Q&A to help answer all of your questions.",
             "room": "teaRoom",
-            "start": "2022-07-09T20:30:00-04:00",
-            "end": "2022-07-09T21:30:00-04:00",
-            "image": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/hex22/schedule.jpg"
+            "start": "2022-09-27T20:30:00-04:00",
+            "end": "2022-09-27T21:30:00-04:00",
+            "image": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsschedule.png"
         },
         {
-            "name": "Campaign Spotlight: TST Ukrainian Aid",
-            "description": "oin Ada King and Maryline Spicy and other members of the TST Ukrainian Aid team for a discussion about the heartbreaking stories of Satanic Ukrainians, what we're doing to help, and how you can help. Questions for the team to be answered live? Submit them via this contact form https://thesatanic.estate/pages/contact-us",
+            "name": "Tales from the Dork Side!",
+            "description": "Join Vyvyan des Esseintesas they read a series of spooky stories and terrifying tales. Pull up a chair, get into something cozy, and pour a goblet of your favorite ghoulish beverage as you enter their li-boo-rary.",
             "room": "frontParlor",
-            "start": "2022-07-09T22:30:00-04:00",
-            "end": "2022-07-09T23:30:00-04:00",
-            "image": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/hex22/schedule.jpg"
+            "start": "2022-09-27T21:30:00-04:00",
+            "end": "2022-09-27T22:30:00-04:00",
+            "image": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsschedule.png"
         },
         {
-            "name": "Tom The Witch's Neighborhood: Baphomet's Birthday",
-            "description": "Join Salem historian, witch, and satanic minister Thomas O'Brien Vallor for some educational programming. Special guests, field trips, and more! This episode is all about Baphomet! Brought to you by the number 7!",
+            "name": "Tom The Witch's Neighborhood",
+            "description": "Join our favorite tour guide Thomas O'Brien Vallor to chat about Salem and the most wonderful time of the year, Halloween.",
             "room": "backParlor",
-            "start": "2022-07-09T21:30:00-04:00",
-            "end": "2022-07-09T22:30:00-04:00",
-            "image": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/hex22/schedule.jpg"
+            "start": "2022-09-27T22:30:00-04:00",
+            "end": "2022-09-27T23:30:00-04:00",
+            "image": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsschedule.png"
         },
         {
-            "name": "Unveiling Day Benediction by Vicar Xixter Midnite",
+            "name": "Halloween Benediction by Minister Neacail MacGille-Eathain",
             "description": "Benedictions explore the spirit of their respective holidays. Benedictions for Satanic holiday events focus people's attention on the religious importance of the holiday. They are a performance as much as they are a declaration, creating a feeling of religious connection and meaning.",
             "room": "ritualChamber",
-            "start": "2022-07-09T20:00:00-04:00",
-            "end": "2022-07-09T20:30:00-04:00",
-            "image": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/hex22/schedule.jpg"
+            "start": "2022-09-27T20:00:00-04:00",
+            "end": "2022-09-27T20:30:00-04:00",
+            "image": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsschedule.png"
+        },
+        {
+            "name": "SOBER FACTION FRIGHT NIGHT PRE-HALLOWEEN EVENT!",
+            "description": "Join us for spooky Sobramily fun, games, stories, and more during this most Holy of Unholy event! Make sure to masquerade and dress for the occasion! Hail Halloween!",
+            "room": "theater",
+            "start": "2022-09-27T20:00:00-04:00",
+            "end": "2022-09-27T23:59:00-04:00",
+            "image": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsschedule.png"
         },
         {
             "name": "Whimsical Blasphemy with DJ Mercy Maelica",
             "description": "Join Mercy, our veteran performer and Resident DJ for music and videos live from Salem.",
             "room": "grandBallroom",
-            "start": "2022-07-09T20:00:00-04:00",
-            "end": "2022-07-09T01:00:00-04:00",
-            "image": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/hex22/schedule.jpg"
+            "start": "2022-09-27T20:00:00-04:00",
+            "end": "2022-09-27T23:59:00-04:00",
+            "image": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsschedule.png"
         }
     ]
 }

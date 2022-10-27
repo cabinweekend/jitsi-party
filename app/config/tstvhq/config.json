@@ -21,10 +21,10 @@
     },
     "welcomePage": {
         "avatarSelectionEnabled": true,
-        "backgroundImagePath": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/welcome.jpg",
+        "backgroundImagePath": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsWelcome.png",
         "enterSpaceButtonText": "ENTER",
         "avatarSelectionText": "Select your Sigil",
-        "headerHtml": "<div class='tst'><p>Welcome Home to</p><h1>The Satanic Temple Virtual Headquarters</h1><h2>Hail Unveiling Day!</h2>"
+        "headerHtml": "<div class='tst'><p>Welcome Home to</p><h1>The Satanic Temple Virtual Headquarters</h1><h2>Happy Halloween!</h2>"
     },
     "avatars": [
         {

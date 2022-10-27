@@ -225,14 +225,14 @@
         {
             "id": "ritualChamber",
             "name": "Ritual Chamber",
-            "type": "JITSI",
-            "capacity": 300,
+            "type": "CHATSTREAM",
+            "capacity": 666,
             "muteRoom": false,
             "hideVideo": false,
             "description": "With a base of amber, sandalwood, tobacco, and frankincense, Baphomet evokes the smokey scent of hidden rooms, velvet thrones, and ancient ritual chambers.(-Serpentinae.com)",
             "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsRitual.png",
             "iframeOptions": {
-                "src": "https://www.youtube.com/embed/0y88sSeI2RU"
+                "src": "https://www.youtube.com/embed/UV4Ms_ENhmk"
             },
             "directions": {
                 "east": "backParlor"
@@ -358,7 +358,7 @@
         {
             "id": "theater",
             "name": "Infernal Theater",
-            "type": "JITSI",
+            "type": "CHATSTREAM",
             "description": "If you do not tell the truth about yourself you cannot tell it about other people.― Virginia Woolf.",
             "art": {
                 "title": "This exhibition, Juried by Wolf Hollow Director, Zee Soffron, explores and promotes the majesty of these beautiful creatures whose alluring energy continues to inspire. As a commitment to the preservation of these important animals, The Salem Art Gallery at The Satanic Temple Salem pledges the proceeds of the works included in this exhibition towards our neighbors to the north, Wolf Hollow Conservation and Education Center.",
@@ -379,20 +379,20 @@
                     "north": 20
                 }
             },
-            "doorTint": "purple",
+            "doorTint": "#000000",
             "backgroundImage": ""
         },
         {
             "id": "cemetery",
             "name": "Cemetery",
-            "type": "CHATSTREAM",
+            "type": "JITSI",
             "capacity": 666,
             "muteRoom": false,
             "hideVideo": false,
             "iframeOptions": {
                 "src": "https://www.youtube.com/embed/M3kkOO6Biag"
             },
-            "description": "We deserve to experience love fully, equally, without shame, and without compromise. — Elliot Page. JOIN THE MEETING https://us02web.zoom.us/j/89943537841",
+            "description": "We deserve to experience love fully, equally, without shame, and without compromise. — Elliot Page.",
             "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsCemetery.png",
             "directions": {
                 "west": "garden"

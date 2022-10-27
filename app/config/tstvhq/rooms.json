@@ -379,7 +379,7 @@
                     "north": 20
                 }
             },
-            "doorTint": "purple",
+            "doorTint": "#000000",
             "backgroundImage": ""
         },
         {

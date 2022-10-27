@@ -389,9 +389,6 @@
             "capacity": 666,
             "muteRoom": false,
             "hideVideo": false,
-            "iframeOptions": {
-                "src": "https://www.youtube.com/embed/M3kkOO6Biag"
-            },
             "description": "We deserve to experience love fully, equally, without shame, and without compromise. — Elliot Page.",
             "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsCemetery.png",
             "directions": {

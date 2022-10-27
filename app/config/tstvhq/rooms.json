@@ -261,7 +261,7 @@
                 "src": "https://video.nest.com/embedded/live/UYYI6tFUy2?autoplay=1"
             },
             "directions": {
-            "south": "theater",
+            "south": "theater"
             },
             "map": {
                 "x": 19,

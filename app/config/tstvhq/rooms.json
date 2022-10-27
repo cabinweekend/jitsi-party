@@ -358,11 +358,14 @@
         {
             "id": "theater",
             "name": "Infernal Theater",
-            "type": "CHATSTREAM",
+            "type": "JITSI",
+            "capacity": 666,
+            "muteRoom": false,
+            "hideVideo": false,
             "description": "If you do not tell the truth about yourself you cannot tell it about other people.― Virginia Woolf.",
             "art": {
                 "title": "This exhibition, Juried by Wolf Hollow Director, Zee Soffron, explores and promotes the majesty of these beautiful creatures whose alluring energy continues to inspire. As a commitment to the preservation of these important animals, The Salem Art Gallery at The Satanic Temple Salem pledges the proceeds of the works included in this exhibition towards our neighbors to the north, Wolf Hollow Conservation and Education Center.",
-                "src": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/infernal_theater.jpg"
+                "src": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsTheater.png"
             },
             "directions": {
                 "west": "sleepingPorch",
@@ -389,9 +392,6 @@
             "capacity": 666,
             "muteRoom": false,
             "hideVideo": false,
-            "iframeOptions": {
-                "src": "https://www.youtube.com/embed/M3kkOO6Biag"
-            },
             "description": "We deserve to experience love fully, equally, without shame, and without compromise. — Elliot Page.",
             "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsCemetery.png",
             "directions": {
@@ -437,12 +437,12 @@
         {
             "id": "garden",
             "name": "Garden",
-            "type": "JITSI",
+            "type": "CHATSTREAM",
             "capacity": 666,
             "muteRoom": false,
             "hideVideo": false,
             "iframeOptions": {
-                "src": "https://www.youtube.com/embed/4r2sz1eT6Rc"
+                "src": "https://www.youtube.com/embed/M3kkOO6Biag"
             },
             "description": "The single best thing about coming out of the closet is that nobody can insult you by telling you what you’ve just told them. — Rachel Maddow",
             "backgroundImage": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsGarden.png",

@@ -10,6 +10,7 @@ on:
         options:
         - temple
         - tstvhq
+        - factionhall
       partyTheme:
         type: choice
         description: 'Party theme'
@@ -17,6 +18,7 @@ on:
         options:
         - temple
         - tst
+        - factionhall
       vhqPlaceholderEnabled:
         type: boolean
         description: 'VHQ placeholder enabled'

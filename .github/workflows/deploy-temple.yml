@@ -6,7 +6,7 @@ on:
       cognitoAllowedGroups:
         type: string
         description: 'Temple Cognito group'
-        default: 'Temple1January22'
+        default: 'Temple1January2022'
       vhqPlaceholderEnabled:
         type: boolean
         description: 'Enable placeholder page ("test mode")'

@@ -18,7 +18,19 @@ from slack_sdk.errors import SlackApiError
 SYNC_MAP = {
     "all-holidays-ticket-2022-pass": "AllHolidays2022",
     "spring-2022-benefactors-support-the-satanic-estate": "Benefactors",
-    "7-26-22-who-are-the-tenets-talking-to": "Temple26July22",
+    "all-conferences-ticket-2022": "AllConferences2022",
+    "the-satanic-temple-soberfaction-international-overdose-awareness-day-memorial-event": "OverdoseAwareness2022",
+    "copy-of-8-23-22-violence": "Temple23August2022",
+    "8-30-22-the-paradox-and-dangers-of-superstitions": "Temple30August2022",
+    "9-06-22-other-voice-military-conditioning-traumas": "Temple6September2022",
+    "9-13-22-satanic-immigrants": "Temple13September2022",
+    "9-20-22-umoja": "Temple20September2022",
+    "10-04-22-satanic-culture-and-me": "Temple4October2022",
+    "10-18-22-memento-mori": "Temple18October2022",
+    "10-25-22-inviolable-black-mass": "Temple25October2022",
+    "11-01-22-continuing-cultural-rituals": "Temple1November2022",
+    "copy-of-12-06-22-empathy-within-reason": "Temple6December2022",
+    "halloween-at-the-estate-10-27-22": "Halloween2022",
 }
 
 

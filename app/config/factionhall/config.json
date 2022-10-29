@@ -8,7 +8,7 @@
         "map": "Estate Map",
         "events": "Calendar of Events",
         "moderator": "Contact a Caretaker",
-        "poke": "Sing to Someone"
+        "poke": "Reach out to a friend"
     },
     "startRoom": "foyer",
     "videoDisplayName": "Guest",
@@ -16,15 +16,15 @@
         "moderatorEmails": [
             "support@thesatanic.estate"
         ],
-        "moderatorNumber": "+14802941991",
+        "moderatorNumber": "+14046420146",
         "formDescription": "Need a Caretaker to look into some unsavory behavior? Let us know what's going on, when, where and who is involved. We\u2019ll keep what you tell us private, and we\u2019ll send someone your way as soon as you send this. Please include the time of the incident, the room in which it took place, the relevant username(s), and a brief description of the situation."
     },
     "welcomePage": {
         "avatarSelectionEnabled": true,
-        "backgroundImagePath": "https://tstvhq.s3.amazonaws.com/backgrounds/factionhall/pride/PrideRoomB.png",
+        "backgroundImagePath": "https://s3.us-east-2.amazonaws.com/thesatanic.estate/backgrounds/factionhall/greyfaction/gfcometpizzaparlor.png",
         "enterSpaceButtonText": "Enter",
-        "avatarSelectionText": "Identify Your Cabal",
-        "headerHtml": "<div class='tst'><p>Welcome to</p><h1>Satanic Pride!</h1>"
+        "avatarSelectionText": "Select Your Avatar",
+        "headerHtml": "<div class='tst'><p>Welcome The Satanic Temple Sober Faction</p><h1>International Overdose Awareness Day Memorial Event 2022</h1>"
     },
     "avatars": [
         {

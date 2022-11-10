@@ -5,7 +5,7 @@
 locals {
   webhook_payload = {
     webhook = {
-      address = module.apig.api_endpoint
+      address = "${module.apig.api_endpoint}/webhook"
       fields  = ["customer", "id", "line_items", ]
       format  = "json"
       topic   = "orders/create"

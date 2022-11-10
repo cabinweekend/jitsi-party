@@ -20,7 +20,7 @@ module "validate-and-enqueue" {
   attach_policy_statements                = true
   create_current_version_allowed_triggers = false
   description                             = "Validate and enqueue Shopify order"
-  function_name                           = "validate-and-enqueue"
+  function_name                           = "${local.context}-${local.env}-validate-and-enqueue"
   handler                                 = "vae.lambda_handler"
   runtime                                 = "python3.9"
   source                                  = "terraform-aws-modules/lambda/aws" # FIXME: this must be pinned to a release tag or commit hash
@@ -56,13 +56,13 @@ module "validate-and-enqueue" {
 module "apig" {
   lambda_arn  = module.validate-and-enqueue.lambda_function_arn
   lambda_name = module.validate-and-enqueue.lambda_function_name
-  name        = "authbot"
+  name        = "${local.context}-${local.env}-authbot"
   source      = "../../../templates/apig" # FIXME: this must be replaced with a versioned reference to repository after the first release
   tags        = local.tags
 }
 
 module "sqs" {
-  name   = "shopify-orders"
+  name   = "${local.context}-${local.env}-shopify-orders"
   source = "../../../modules/sqs"
 }
 
@@ -71,7 +71,7 @@ module "authbot" {
   attach_policy_statements                = true
   create_current_version_allowed_triggers = false
   description                             = "Auth Bot"
-  function_name                           = "AuthBot"
+  function_name                           = "${local.context}-${local.env}-AuthBot"
   handler                                 = "authbot.lambda_handler"
   number_of_policies                      = 1
   policies                                = ["arn:aws:iam::aws:policy/service-role/AWSLambdaSQSQueueExecutionRole", ]

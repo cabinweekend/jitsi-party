@@ -103,6 +103,7 @@ def lambda_handler(event, context):
             continue
 
         for item in order.get("line_items", []):
+            logger.info(f"Found product {item['product_id']}")
             if SYNC_MAP.get(item['product_id']):
                 users[customer_email].add(SYNC_MAP[item['product_id']])
                 fulfillments[order['id']].add(item['id'])

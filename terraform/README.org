@@ -13,6 +13,14 @@ Messages received by the queue are processed with the Lambda Function «AuthBot2
 (=/authbot2/authbot.py=) in batches, up to 10 messages per call.  Function
 timeout is set to 30 seconds, matching the SQS visibility timeout.
 
+* Shopify Permissions
+AuthoBot2 requires following Shopify permissions:
+
+Assigned fulfillment — Read access
+Customers — Read access
+Orders — Read and write
+Products — Read access
+
 * Manual steps
 Two manual steps are required after the first deployment:
 1. Populate secrets.  To avoid exposing Shopify API credentials to CI/CD and

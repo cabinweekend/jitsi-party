@@ -30,6 +30,7 @@ SYNC_MAP = {
     "10-25-22-inviolable-black-mass": "Temple25October2022",
     "11-01-22-continuing-cultural-rituals": "Temple1November2022",
     "copy-of-12-06-22-empathy-within-reason": "Temple6December2022",
+    "halloween-at-the-estate-10-27-22": "Halloween2022",
 }
 
 

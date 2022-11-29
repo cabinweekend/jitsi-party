@@ -2,7 +2,7 @@
     "imagemaps": [
         {
             "id": "secret-tunnel-map",
-            "img": "https://tstvhq.s3.amazonaws.com/imagemap-images/secret tunnel.jpg",
+            "img": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsTunnel.png",
             "areas": [
                 {
                     "shape": "circle",
@@ -32,7 +32,7 @@
         },
         {
             "id": "garden-map",
-            "img": "https://tstvhq.s3.amazonaws.com/imagemap-images/garden.jpg",
+            "img": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsGarden.png",
             "areas": [
                 {
                     "shape": "rect",
@@ -50,7 +50,7 @@
         },
         {
             "id": "grand-staircase-map",
-            "img": "https://tstvhq.s3.amazonaws.com/imagemap-images/staircase1.jpg",
+            "img": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsstaircase1.png",
             "areas": [
                 {
                     "shape": "rect",
@@ -86,7 +86,7 @@
         },
         {
             "id": "satanic-library-map",
-            "img": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/UNV22/library.jpg",
+            "img": "https://tstvhq.s3.amazonaws.com/backgrounds/vhq/allevents/alleventsLibrary.png",
             "areas": [
                 {
                     "shape": "poly",

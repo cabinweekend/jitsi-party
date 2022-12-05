@@ -7,7 +7,6 @@ warnings.filterwarnings('ignore', category=FutureWarning, module='botocore.clien
 from botocore.exceptions import ClientError
 from collections import defaultdict
 import boto3
-import json
 import logging
 import os
 import random
@@ -34,7 +33,6 @@ SYNC_MAP = {
     7934184128742: 'Temple6December2022', # "copy-of-12-06-22-empathy-within-reason"
 }
 
-# FIXME: Use secret manager instead
 AWS_COGNITO_USER_POOL_ID = os.environ.get("AWS_COGNITO_USER_POOL_ID")
 SHOPIFY_API_VERSION = "2022-07"
 SHOPIFY_PASS_ARN = os.environ.get("SHOPIFY_PASS_ARN")
@@ -58,32 +56,6 @@ def generate_temporary_password() -> str:
         random.choice(string.digits) for _ in range(3)
     )
 
-def fulfill_order(fulfillment_order_id, fulfillment_order_line_item_ids):
-    query = '''
-    mutation fulfillmentCreateV2($fulfillment: FulfillmentV2Input!) {
-      fulfillmentCreateV2(fulfillment: $fulfillment) {
-        fulfillment {
-          id
-        }
-        userErrors {
-          field
-          message
-        }
-      }
-    }'''
-
-    shopify.GraphQL().execute(query=query,
-                              variables={'fulfillment': {
-                                  'lineItemsByFulfillmentOrder': [{
-                                      'fulfillmentOrderId': "gid://shopify/FulfillmentOrder/6048093339901",
-                                      'fulfillmentOrderLineItems': [{
-                                          'id': "gid://shopify/FulfillmentOrderLineItem/12795399176445",
-                                          'quantity': 1
-                                      }]
-                                  }]
-                              }})
-
-
 def get_secret(client, arn):
     response = client.get_secret_value(SecretId=arn)
     return response["SecretString"]
@@ -94,22 +66,20 @@ def lambda_handler(event, context):
     users = defaultdict(set)
 
     # Extract user groups from the order
-    for record in event.get("Records", []):
-        order = json.loads(record["body"])
-        logger.info(f"Processing order ID {order['id']}")
-        customer_email = order.get("customer", {}).get("email")
-        if not customer_email:
-            logger.warn(f"Oder {order['id']} doesn't have customer email!")
-            continue
+    order = event["detail"]["payload"]
+    logger.info(f"Processing order ID {order['id']}")
+    customer_email = order.get("customer", {}).get("email")
+    if not customer_email:
+        logger.warn(f"Oder {order['id']} doesn't have customer email!")
 
-        for item in order.get("line_items", []):
-            logger.info(f"Found product {item['product_id']}")
-            if SYNC_MAP.get(item['product_id']):
-                users[customer_email].add(SYNC_MAP[item['product_id']])
-                fulfillments[order['id']].add(item['id'])
+    for item in order.get("line_items", []):
+        logger.info(f"Found product {item['product_id']}")
+        if SYNC_MAP.get(item['product_id']):
+            users[customer_email].add(SYNC_MAP[item['product_id']])
+            fulfillments[order['id']].add(item['id'])
 
     if len(users.keys()) < 1:
-        # Nothing left to do
+        # Nothing to do
         return
 
     cognito_client = boto3.client("cognito-idp")
@@ -150,7 +120,6 @@ def lambda_handler(event, context):
                      for item in filter(lambda x: x.line_item_id in line_items, fulfillment_order.line_items)]
             if len(items) < 1:
                 continue
-
             shopify.GraphQL().execute(query=FULFILLMENT_QUERY,
                                       variables={'fulfillment': {
                                           'lineItemsByFulfillmentOrder': [{

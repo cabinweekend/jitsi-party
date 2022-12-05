@@ -1,5 +1,5 @@
 #
-# API Gateway template
+# AuthBot Lambda template
 #
 
 terraform {

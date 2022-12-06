@@ -24,11 +24,11 @@ converse-muc {
 #conversejs {
   z-index: 5 !important;
 
-  // .badge,
-  // .chat-info,
-  // .hide-occupants {
-  //   display: none !important;
-  // }
+  .badge,
+  .chat-info,
+  .hide-occupants {
+    display: none !important;
+  }
 
   .chat-head {
     background-color: $background-color !important;
@@ -90,8 +90,6 @@ converse-muc {
     }
 
     .chat-msg__avatar {
-      background: $chat-msg-avatar-background !important;
-
       image {
         width: 100% !important;
         height: 100% !important;

@@ -64,25 +64,25 @@ export const ChatStreamRoom = ({
           logout = this._converse.api.user.logout;
           plugins = this._converse.pluggable.plugins;
 
-          this._converse.api.listen.on(
-            "userDetailsModalInitialized",
-            (model) => {
-              console.log(model);
-            }
-          );
+          // this._converse.api.listen.on(
+          //   "userDetailsModalInitialized",
+          //   (model) => {
+          //     console.log(model);
+          //   }
+          // );
 
-          document.addEventListener("keydown", async (e) => {
-            if (e.key === "k" && e.ctrlKey && e.altKey) {
-              const muc = await this._converse.api.rooms.get(
-                `${roomId.toLowerCase()}@muc.party.jitsi`
-              );
+          // document.addEventListener("keydown", async (e) => {
+          //   if (e.key === "k" && e.ctrlKey && e.altKey) {
+          //     const muc = await this._converse.api.rooms.get(
+          //       `${roomId.toLowerCase()}@muc.party.jitsi`
+          //     );
 
-              const occupant = muc.getOccupant(displayName);
-              // occupant.set({ role: "moderator" });
-              // muc.setRole(occupant, "moderator", "");
-              console.log(occupant);
-            }
-          });
+          //     const occupant = muc.getOccupant(displayName);
+          //     // occupant.set({ role: "moderator" });
+          //     // muc.setRole(occupant, "moderator", "");
+          //     console.log(occupant);
+          //   }
+          // });
 
           // set the user's profile image
           this._converse.api.listen.on("VCardsInitialized", () => {
@@ -110,8 +110,6 @@ export const ChatStreamRoom = ({
         {
           jid: `${roomId.toLowerCase()}@muc.party.jitsi`,
           nick: displayName,
-          affiliation: "admin",
-          role: "moderator",
         },
       ],
       auto_reconnect: true,

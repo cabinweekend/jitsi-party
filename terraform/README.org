@@ -1,0 +1,39 @@
+* AuthBot2 Notes
+TL;DR: Shopify (Webhook POST) → API Gateway → Validate and Enqueue (Lambda
+Function) → SQS → AuthBot2 (Lambda Function) → Shopify API Endpoint.
+
+When a new order is created, Shopify sends an event to the AWS API Gateway
+endpoint =/webhook=.  Gateway is using Lambda Function «Validate and Enqueue»
+(=/vae/vae.py=) to validate the HMAC signature of the received order data, and
+to submit valid events to the SQS FIFO queue.  Since the Shopify Webhook
+delivery guarantee is «at least once» (see [[https://shopify.dev/apps/webhooks#limitations][doc]]), the FIFO queue with
+content-based deduplication is used.
+
+Messages received by the queue are processed with the Lambda Function «AuthBot2»
+(=/authbot2/authbot.py=) in batches, up to 10 messages per call.  Function
+timeout is set to 30 seconds, matching the SQS visibility timeout.
+
+* Shopify Permissions
+AuthoBot2 requires following Shopify permissions:
+
+Assigned fulfillment — Read access
+Customers — Read access
+Orders — Read and write
+Products — Read access
+
+* Manual steps
+Two manual steps are required after the first deployment:
+1. Populate secrets.  To avoid exposing Shopify API credentials to CI/CD and
+   Terraform state, secrets are not populated automatically by Terraform.  These
+   credentials change rarely if ever.
+2. Register webhook with Shopify.  There is no good way to call external API
+   from Terraform.  This operation must be performed once per API Gateway, which
+   is about as unlikely to change after the first provisioning, as Shopify API
+   credentials.
+
+See Terraform output =manual_steps= for details.
+
+* Dependencies
+- AWS CLI 2
+- Python 3.9
+- Terraform 1.2

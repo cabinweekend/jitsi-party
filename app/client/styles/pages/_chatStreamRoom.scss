@@ -1,10 +1,15 @@
 $mobile_landscape_height: 450px !default;
 $mobile_portrait_length: 480px !default;
 
-#conversejs.converse-embedded.converse-singleton .flyout,
-#conversejs.converse-fullscreen.converse-singleton .flyout {
+converse-muc {
   border: $chat-border-width solid $chat-border !important;
   border-radius: 7px !important;
+}
+
+.flyout {
+  &.box-flyout {
+    background-color: transparent !important;
+  }
 }
 
 .chatstream-section {
@@ -85,8 +90,6 @@ $mobile_portrait_length: 480px !default;
     }
 
     .chat-msg__avatar {
-      background: $chat-msg-avatar-background !important;
-
       image {
         width: 100% !important;
         height: 100% !important;

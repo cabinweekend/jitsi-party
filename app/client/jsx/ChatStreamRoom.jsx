@@ -64,6 +64,26 @@ export const ChatStreamRoom = ({
           logout = this._converse.api.user.logout;
           plugins = this._converse.pluggable.plugins;
 
+          // this._converse.api.listen.on(
+          //   "userDetailsModalInitialized",
+          //   (model) => {
+          //     console.log(model);
+          //   }
+          // );
+
+          // document.addEventListener("keydown", async (e) => {
+          //   if (e.key === "k" && e.ctrlKey && e.altKey) {
+          //     const muc = await this._converse.api.rooms.get(
+          //       `${roomId.toLowerCase()}@muc.party.jitsi`
+          //     );
+
+          //     const occupant = muc.getOccupant(displayName);
+          //     // occupant.set({ role: "moderator" });
+          //     // muc.setRole(occupant, "moderator", "");
+          //     console.log(occupant);
+          //   }
+          // });
+
           // set the user's profile image
           this._converse.api.listen.on("VCardsInitialized", () => {
             const avatarUrl = Config.avatars[avatar.type].images[avatar.color];
@@ -87,7 +107,10 @@ export const ChatStreamRoom = ({
       auto_login: true,
       auto_join_rooms: [
         // gotta lowercase the roomId cuz for some reason uppercase breaks converse
-        { jid: `${roomId.toLowerCase()}@muc.party.jitsi`, nick: displayName },
+        {
+          jid: `${roomId.toLowerCase()}@muc.party.jitsi`,
+          nick: displayName,
+        },
       ],
       auto_reconnect: true,
       bosh_service_url: `${Config.baseUrl}jitsi/http-bind`,
@@ -106,6 +129,7 @@ export const ChatStreamRoom = ({
       view_mode: "embedded",
       message_archiving: "always",
       debug: true,
+      show_send_button: false,
       persistent_store: "IndexedDB",
       muc_history_max_stanzas: 500,
     });
@@ -130,7 +154,8 @@ export const ChatStreamRoom = ({
     // use MutationObserver to restucture the chatbox
     const observer = new MutationObserver((muts) => {
       if (document.querySelector(".chatbox-title__buttons") !== null) {
-        document.querySelector(".chat-head").innerHTML = "";
+        const heading = document.querySelector("converse-muc-heading");
+        heading.remove();
       }
 
       if (document.querySelector(".chat-textarea") !== null) {
@@ -140,11 +165,6 @@ export const ChatStreamRoom = ({
             if ([37, 38, 39, 40].includes(e.keyCode))
               e.stopImmediatePropagation();
           });
-      }
-
-      if (document.querySelector(".send-button") !== null) {
-        document.querySelector(".send-button").remove();
-        observer.disconnect();
       }
     });
 

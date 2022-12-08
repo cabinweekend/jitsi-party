@@ -35,7 +35,7 @@ module "this" {
 
   policy_statements = {
     cognito_idp = {
-      actions   = ["cognito-idp:AdminAddUserToGroup", "cognito-idp:AdminCreateUser", ]
+      actions   = ["cognito-idp:AdminAddUserToGroup", "cognito-idp:AdminCreateUser", "cognito-idp:CreateGroup", "cognito-idp:ListGroups", ]
       effect    = "Allow"
       resources = ["arn:aws:cognito-idp:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:userpool/${var.cognito_user_pool_id}"]
     }

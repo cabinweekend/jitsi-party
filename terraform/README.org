@@ -1,37 +1,43 @@
 * AuthBot2 Notes
-TL;DR: Shopify (Webhook POST) → API Gateway → Validate and Enqueue (Lambda
-Function) → SQS → AuthBot2 (Lambda Function) → Shopify API Endpoint.
+TL;DR: Shopify → EventBridge → AuthBot2 (Lambda Function) → Shopify API
+Endpoint.
 
-When a new order is created, Shopify sends an event to the AWS API Gateway
-endpoint =/webhook=.  Gateway is using Lambda Function «Validate and Enqueue»
-(=/vae/vae.py=) to validate the HMAC signature of the received order data, and
-to submit valid events to the SQS FIFO queue.  Since the Shopify Webhook
-delivery guarantee is «at least once» (see [[https://shopify.dev/apps/webhooks#limitations][doc]]), the FIFO queue with
-content-based deduplication is used.
+When a new order is created, Shopify sends an event to the AWS EventBridge.
 
-Messages received by the queue are processed with the Lambda Function «AuthBot2»
-(=/authbot2/authbot.py=) in batches, up to 10 messages per call.  Function
-timeout is set to 30 seconds, matching the SQS visibility timeout.
+Events are immediately processed with the Lambda Function «AuthBot2»
+(=/authbot2/authbot.py=), 1 event per call.  Function timeout is set to 30
+seconds.
 
 * Shopify Permissions
-AuthoBot2 requires following Shopify permissions:
-
-Assigned fulfillment — Read access
-Customers — Read access
-Orders — Read and write
-Products — Read access
+AuthBot2 requires following Shopify Admin API access scopes:
+- read_assigned_fulfillment_orders
+- read_customers
+- write_orders
+- read_orders
+- read_products
+- read_merchant_managed_fulfillment_orders
+- write_merchant_managed_fulfillment_orders
 
 * Manual steps
 Two manual steps are required after the first deployment:
-1. Populate secrets.  To avoid exposing Shopify API credentials to CI/CD and
+1. Set up EventBridge integration. See [[https://shopify.dev/apps/webhooks/configuration/eventbridge#how-eventbridge-integration-works][Shopify documentation]] and [[https://www.youtube.com/watch?v=q1Yyzq6hAuY][YouTube video]]
+   for details.
+2. Populate secrets.  To avoid exposing Shopify API credentials to CI/CD and
    Terraform state, secrets are not populated automatically by Terraform.  These
    credentials change rarely if ever.
-2. Register webhook with Shopify.  There is no good way to call external API
-   from Terraform.  This operation must be performed once per API Gateway, which
-   is about as unlikely to change after the first provisioning, as Shopify API
-   credentials.
+3. Register webhook with Shopify.  There is no good way to call external API
+   from Terraform.  This operation must be performed once EventBridge
+   integration is set up.
 
 See Terraform output =manual_steps= for details.
+
+* Cognito groups automation
+AuthBot will create Cognito groups based on product tags with the «authbot:»
+prefix. For example, the order with the product tagged as
+«authbot:secret-society-group» will create a «secret-society-group» in Cognito
+if it doesn't exist.  The group name must contain between 1 and 128 non-space
+characters.  To avoid unnecessary complications and mistakes, it is recommended
+to use letters, numbers, and «-» (dashes).
 
 * Dependencies
 - AWS CLI 2

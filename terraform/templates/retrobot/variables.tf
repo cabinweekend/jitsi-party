@@ -1,24 +1,20 @@
 #
-# AuthBot Lambda template
+# RetroBot Lambda template
 #
 
-variable "backfill_trigger_rule_arn" {
-  description = "Backfill event bus ARN"
+variable "backfill_bus_arn" {
+  description = "ARN of the EventBridge backfill bus"
   type        = string
 }
 
-variable "cognito_user_pool_id" {
-  description = "AWS Cognito user pool ID"
-  type        = string
+variable "backfill_days" {
+  default     = 7
+  description = "How many days of orders backfill?"
+  type        = number
 }
 
 variable "name" {
   description = "DNS-friendly name"
-  type        = string
-}
-
-variable "orders_trigger_rule_arn" {
-  description = "Shopify event bus ARN"
   type        = string
 }
 

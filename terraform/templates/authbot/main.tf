@@ -14,6 +14,7 @@ module "this" {
   handler                                 = "authbot.lambda_handler"
   number_of_policies                      = 1
   policies                                = ["arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole", ]
+  reserved_concurrent_executions          = 2
   runtime                                 = "python3.9"
   source                                  = "terraform-aws-modules/lambda/aws" # FIXME: this must be pinned to a release tag or commit hash
   source_path                             = "../../../../authbot2"
@@ -23,7 +24,11 @@ module "this" {
   allowed_triggers = {
     OrdersRule = {
       principal  = "events.amazonaws.com"
-      source_arn = var.trigger_rule_arn
+      source_arn = var.orders_trigger_rule_arn
+    }
+    BackfillRule = {
+      principal  = "events.amazonaws.com"
+      source_arn = var.backfill_trigger_rule_arn
     }
   }
 

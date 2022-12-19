@@ -6,7 +6,7 @@ When a new order is created, Shopify sends an event to the AWS EventBridge.
 
 Events are immediately processed with the Lambda Function «AuthBot2»
 (=/authbot2/authbot.py=), 1 event per call.  Function timeout is set to 30
-seconds.
+seconds, and concurrency to 2 due to the Shopify API request rate requirements.
 
 * Shopify Permissions
 AuthBot2 requires following Shopify Admin API access scopes:
@@ -38,6 +38,11 @@ prefix. For example, the order with the product tagged as
 if it doesn't exist.  The group name must contain between 1 and 128 non-space
 characters.  To avoid unnecessary complications and mistakes, it is recommended
 to use letters, numbers, and «-» (dashes).
+
+* Order backfill (Retrobot)
+Retrobot will backfill last =BACKFILL_DAYS= (default is 7) worth of orders into
+a separate bus to be processed by AuthBot2.  Function timeout is set to 30
+seconds.
 
 * Dependencies
 - AWS CLI 2

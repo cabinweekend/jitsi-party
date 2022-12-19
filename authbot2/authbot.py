@@ -47,15 +47,17 @@ def get_secret(client, arn):
     return response["SecretString"]
 
 def lambda_handler(event, context):
-    fulfillments = defaultdict(set)
+    fulfillments = set()
     groups = set()
+    products_ids = set()
     smclient = boto3.client('secretsmanager')
 
     order = event["detail"]["payload"]
-    logger.info(f"Processing order ID {order['id']}")
+    order_id = order["id"]
+    logger.info(f"Processing order ID {order_id}")
     customer_email = order.get("customer", {}).get("email")
     if not customer_email:
-        logger.warn(f"Oder {order['id']} doesn't have customer email! Exiting.")
+        logger.warn(f"Oder {order_id} doesn't have customer email! Exiting.")
         sys.exit()
 
     shopify_pass = get_secret(smclient, SHOPIFY_PASS_ARN)
@@ -64,32 +66,23 @@ def lambda_handler(event, context):
 
     for item in order.get("line_items", []):
         product_id = item['product_id']
+        logger.info(f"Found product {product_id}")
+        products_ids.add(product_id)
 
-        logger.info(f"Processing product {product_id}")
-        try:
-            product = shopify.Product.find(product_id)
-        except ResourceNotFound:
-            logger.warning(f"Product object {product_id} not found at Shopify! Skipping.")
-            continue
-        else:
-            for tag in product.tags.split(","):
-                if tag.startswith(TAG_PREFIX):
-                    groups.add(tag.replace(TAG_PREFIX, ""))
+    for product in shopify.Product.find(ids=",".join([str(x) for x in products_ids])):
+        for tag in product.tags.split(","):
+            if tag.startswith(TAG_PREFIX):
+                groups.add(tag.replace(TAG_PREFIX, ""))
 
         if len(groups) < 1:
             # Nothing to do
             continue
 
-        fulfillments[order['id']].add(item['id'])
+        fulfillments.add(item['id'])
 
     cognito_client = boto3.client("cognito-idp")
-    try:
-        cognito_groups = cognito_client.list_groups(UserPoolId=AWS_COGNITO_USER_POOL_ID)
-    except ClientError as error:
-        logger.error("Can't fetch groups")
-        raise error
-    else:
-        cognito_groups = [x['GroupName'] for x in cognito_groups['Groups']]
+    cognito_groups = cognito_client.list_groups(UserPoolId=AWS_COGNITO_USER_POOL_ID)
+    cognito_groups = [x['GroupName'] for x in cognito_groups['Groups']]
 
     try:
         logger.info(f"Creating user {customer_email}")
@@ -131,17 +124,18 @@ def lambda_handler(event, context):
             Username=customer_email,
         )
 
-    for order_id, line_items in fulfillments.items():
-        for fulfillment_order in shopify.FulfillmentOrders().find(order_id=order_id):
-            items = [{'id': f"gid://shopify/FulfillmentOrderLineItem/{item.id}",'quantity': 1}
-                     for item in filter(lambda x: x.line_item_id in line_items, fulfillment_order.line_items)]
-            if len(items) < 1:
-                continue
-            shopify.GraphQL().execute(query=FULFILLMENT_QUERY,
-                                      variables={'fulfillment': {
-                                          'lineItemsByFulfillmentOrder': [{
-                                              'fulfillmentOrderId': f"gid://shopify/FulfillmentOrder/{fulfillment_order.id}",
-                                              'fulfillmentOrderLineItems': items
-                                          }]
-                                      }})
+    for fulfillment_order in shopify.FulfillmentOrders().find(order_id=order_id):
+        items = [{'id': f"gid://shopify/FulfillmentOrderLineItem/{item.id}",'quantity': 1}
+                 for item in filter(lambda x: x.line_item_id in fulfillments, fulfillment_order.line_items)]
+        if len(items) < 1:
+            continue
+
+        shopify.GraphQL().execute(query=FULFILLMENT_QUERY,
+                                  variables={'fulfillment': {
+                                      'lineItemsByFulfillmentOrder': [{
+                                          'fulfillmentOrderId': f"gid://shopify/FulfillmentOrder/{fulfillment_order.id}",
+                                          'fulfillmentOrderLineItems': items
+                                      }]
+                                  }})
+
     shopify.ShopifyResource.clear_session()

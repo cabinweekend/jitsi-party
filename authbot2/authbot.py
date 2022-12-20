@@ -57,7 +57,7 @@ def lambda_handler(event, context):
     logger.info(f"Processing order ID {order_id}")
     customer_email = order.get("customer", {}).get("email")
     if not customer_email:
-        logger.warn(f"Oder {order_id} doesn't have customer email! Exiting.")
+        logger.warn(f"Order {order_id} doesn't have customer email! Exiting.")
         sys.exit()
 
     shopify_pass = get_secret(smclient, SHOPIFY_PASS_ARN)

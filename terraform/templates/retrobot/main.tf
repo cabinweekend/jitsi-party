@@ -22,10 +22,10 @@ module "this" {
   version                                 = "4.7.1"
 
   environment_variables = {
-    BACKFILL_BUS_ARN = var.backfill_bus_arn
-    BACKFILL_DAYS    = var.backfill_days
-    SHOPIFY_PASS_ARN = var.shopify_pass_arn
-    SHOPIFY_SHOP_URL = var.shopify_shop_url
+    BACKFILL_BUS_ARN    = var.backfill_bus_arn
+    BACKFILL_DAYS       = var.backfill_days
+    SHOPIFY_PASS_ARN    = var.shopify_pass_arn
+    SHOPIFY_SHOP_DOMAIN = var.shopify_shop_domain
   }
 
   policy_statements = {

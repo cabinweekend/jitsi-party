@@ -30,16 +30,16 @@ module "authbot" {
   name                      = "${local.context}-${local.env}-AuthBot"
   orders_trigger_rule_arn   = module.eventbridge.orders_rule_arns["orders"]
   shopify_pass_arn          = module.secrets["shopify_pass"].arn
-  shopify_shop_url          = var.shopify_shop_url
+  shopify_shop_domain       = var.shopify_shop_domain
   source                    = "../../../templates/authbot" # FIXME: this must be replaced with a versioned reference to repository after the first release
   tags                      = local.tags
 }
 
 module "retrobot" {
-  backfill_bus_arn = module.eventbridge.backfill_bus_arn
-  name             = "${local.context}-${local.env}-RetroBot"
-  shopify_pass_arn = module.secrets["shopify_pass"].arn
-  shopify_shop_url = var.shopify_shop_url
-  source           = "../../../templates/retrobot" # FIXME: this must be replaced with a versioned reference to repository after the first release
-  tags             = local.tags
+  backfill_bus_arn    = module.eventbridge.backfill_bus_arn
+  name                = "${local.context}-${local.env}-RetroBot"
+  shopify_pass_arn    = module.secrets["shopify_pass"].arn
+  shopify_shop_domain = var.shopify_shop_domain
+  source              = "../../../templates/retrobot" # FIXME: this must be replaced with a versioned reference to repository after the first release
+  tags                = local.tags
 }

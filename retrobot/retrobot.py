@@ -18,7 +18,7 @@ BACKFILL_BUS_ARN = os.environ.get("BACKFILL_BUS_ARN")
 BACKFILL_DAYS = int(os.environ.get("BACKFILL_DAYS", 7))
 SHOPIFY_API_VERSION = "2022-07"
 SHOPIFY_PASS_ARN = os.environ.get("SHOPIFY_PASS_ARN")
-SHOPIFY_SHOP_URL = os.environ.get("SHOPIFY_SHOP_URL")
+SHOPIFY_SHOP_DOMAIN = os.environ.get("SHOPIFY_SHOP_DOMAIN")
 
 def get_secret(client, arn):
     response = client.get_secret_value(SecretId=arn)
@@ -34,7 +34,7 @@ def lambda_handler(event, context):
     timestamp = (datetime.datetime.now()-datetime.timedelta(days=BACKFILL_DAYS)).isoformat()
 
     shopify_pass = get_secret(smclient, SHOPIFY_PASS_ARN)
-    shopify_session = shopify.Session(SHOPIFY_SHOP_URL, SHOPIFY_API_VERSION, shopify_pass)
+    shopify_session = shopify.Session(SHOPIFY_SHOP_DOMAIN, SHOPIFY_API_VERSION, shopify_pass)
     shopify.ShopifyResource.activate_session(shopify_session)
 
     if shopify.Order.count(updated_at_min=timestamp) > 0:

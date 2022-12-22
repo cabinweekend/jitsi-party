@@ -21,7 +21,7 @@ logger.setLevel(logging.INFO)
 AWS_COGNITO_USER_POOL_ID = os.environ.get("AWS_COGNITO_USER_POOL_ID")
 SHOPIFY_API_VERSION = "2022-07"
 SHOPIFY_PASS_ARN = os.environ.get("SHOPIFY_PASS_ARN")
-SHOPIFY_SHOP_URL = os.environ.get("SHOPIFY_SHOP_URL")
+SHOPIFY_SHOP_DOMAIN = os.environ.get("SHOPIFY_SHOP_DOMAIN")
 TAG_PREFIX = "authbot:"
 
 FULFILLMENT_QUERY = '''
@@ -61,7 +61,7 @@ def lambda_handler(event, context):
         sys.exit()
 
     shopify_pass = get_secret(smclient, SHOPIFY_PASS_ARN)
-    shopify_session = shopify.Session(SHOPIFY_SHOP_URL, SHOPIFY_API_VERSION, shopify_pass)
+    shopify_session = shopify.Session(SHOPIFY_SHOP_DOMAIN, SHOPIFY_API_VERSION, shopify_pass)
     shopify.ShopifyResource.activate_session(shopify_session)
 
     for item in order.get("line_items", []):

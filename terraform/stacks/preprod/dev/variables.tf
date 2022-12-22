@@ -12,7 +12,7 @@ variable "cognito_user_pool_id" {
   type        = string
 }
 
-variable "shopify_shop_url" {
+variable "shopify_shop_domain" {
   description = "Shopify Shop URL"
   type        = string
 }

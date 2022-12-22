@@ -23,7 +23,7 @@ variable "shopify_pass_arn" {
   type        = string
 }
 
-variable "shopify_shop_url" {
+variable "shopify_shop_domain" {
   description = "Shopify Shop URL"
   type        = string
 }

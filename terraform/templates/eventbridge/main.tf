@@ -3,7 +3,7 @@
 #
 
 data "aws_caller_identity" "current" {}
-data "aws_cloudwatch_event_source" "shopify" { name_prefix = "aws.partner/shopify.com" }
+data "aws_cloudwatch_event_source" "shopify" { name_prefix = var.bus_name }
 data "aws_region" "current" {}
 
 locals {

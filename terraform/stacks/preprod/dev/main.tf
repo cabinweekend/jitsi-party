@@ -12,7 +12,7 @@ locals {
 module "secrets" {
   for_each = local.secrets
   name     = "${local.context}-${local.env}-${each.key}"
-  source   = "../../../modules/secret"
+  source   = "../../../modules/secret" # FIXME: this must be replaced with a versioned reference to repository after the first release
   tags     = local.tags
 }
 

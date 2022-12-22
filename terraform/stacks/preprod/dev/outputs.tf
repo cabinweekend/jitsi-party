@@ -17,6 +17,16 @@ locals {
   ])
 }
 
+output "github_user_access_key" {
+  value     = module.retrobot.access_key
+  sensitive = true
+}
+
+output "github_user_secret_key" {
+  value     = module.retrobot.secret_key
+  sensitive = true
+}
+
 output "manual_steps" {
   value = <<EOT
 Manual steps are required to finish system setup. First, populate environment:
@@ -35,4 +45,8 @@ $ curl -d '${jsonencode(local.webhook_payload)}' \
 -H "Content-Type: application/json"
 
 EOT
+}
+
+output "retrobot_lambda_function_name" {
+  value = module.retrobot.lambda_function_name
 }

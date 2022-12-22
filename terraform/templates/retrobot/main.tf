@@ -5,6 +5,17 @@
 data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
+locals {
+  policy = {
+    Version = "2012-10-17"
+    Statement = [{
+      Action   = "lambda:InvokeFunction"
+      Effect   = "Allow"
+      Resource = module.this.lambda_function_arn
+    }]
+  }
+}
+
 module "this" {
   attach_policies                         = true
   attach_policy_statements                = true
@@ -42,27 +53,16 @@ module "this" {
   }
 }
 
-# module "topic" {
-#   name    = "RetroBotMessages"
-#   source  = "terraform-aws-modules/sns/aws"
-#   version = "~> 3.0"
-#   tags    = var.tags
-# }
+resource "aws_iam_user" "this" {
+  name = "${var.name}-github"
+  tags = var.tags
+}
 
-# module "alarm" {
-#   alarm_actions       = [module.topic.sns_topic_arn]
-#   alarm_description   = "RetroBot2 errors"
-#   alarm_name          = "${var.name}-errors"
-#   comparison_operator = "GreaterThanThreshold"
-#   evaluation_periods  = 1
-#   metric_name         = "Errors"
-#   dimensions          = { FunctionName = module.this.lambda_function_name }
-#   treat_missing_data  = "notBreaching"
-#   period              = 300
-#   source              = "terraform-aws-modules/cloudwatch/aws//modules/metric-alarm"
-#   statistic           = "Maximum"
-#   namespace           = "AWS/Lambda"
-#   threshold           = 0
-#   version             = "~> 3.0"
-#   tags                = var.tags
-# }
+resource "aws_iam_access_key" "this" {
+  user = aws_iam_user.this.name
+}
+
+resource "aws_iam_user_policy" "this" {
+  user   = aws_iam_user.this.name
+  policy = jsonencode(local.policy)
+}

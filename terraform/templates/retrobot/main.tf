@@ -15,10 +15,11 @@ module "this" {
   number_of_policies                      = 1
   policies                                = ["arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole", ]
   runtime                                 = "python3.9"
-  source                                  = "terraform-aws-modules/lambda/aws" # FIXME: this must be pinned to a release tag or commit hash
+  source                                  = "terraform-aws-modules/lambda/aws"
   source_path                             = "../../../../retrobot"
   tags                                    = var.tags
   timeout                                 = "30"
+  version                                 = "4.7.1"
 
   environment_variables = {
     BACKFILL_BUS_ARN = var.backfill_bus_arn

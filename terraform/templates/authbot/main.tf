@@ -16,10 +16,11 @@ module "this" {
   policies                                = ["arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole", ]
   reserved_concurrent_executions          = 2
   runtime                                 = "python3.9"
-  source                                  = "terraform-aws-modules/lambda/aws" # FIXME: this must be pinned to a release tag or commit hash
+  source                                  = "terraform-aws-modules/lambda/aws"
   source_path                             = "../../../../authbot2"
   tags                                    = var.tags
   timeout                                 = "30"
+  version                                 = "4.7.1"
 
   allowed_triggers = {
     OrdersRule = {

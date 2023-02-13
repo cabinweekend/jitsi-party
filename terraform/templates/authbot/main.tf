@@ -36,7 +36,7 @@ module "this" {
   environment_variables = {
     AWS_COGNITO_USER_POOL_ID = var.cognito_user_pool_id
     SHOPIFY_PASS_ARN         = var.shopify_pass_arn
-    SHOPIFY_SHOP_DOMAIN         = var.shopify_shop_domain
+    SHOPIFY_SHOP_DOMAIN      = var.shopify_shop_domain
   }
 
   policy_statements = {
@@ -55,7 +55,7 @@ module "this" {
 }
 
 module "topic" {
-  name    = "AuthBotMessages"
+  name    = var.name
   source  = "terraform-aws-modules/sns/aws"
   version = "~> 3.0"
   tags    = var.tags

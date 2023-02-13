@@ -18,8 +18,8 @@ jobs:
     - name: Invoke Backfill Lambda function
       uses: gagoar/invoke-aws-lambda@v3.3.1
       with:
-        AWS_ACCESS_KEY_ID: ${{ secrets.RETROBOT_AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.RETROBOT_AWS_SECRET_ACCESS_KEY }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         REGION: us-east-2
         FunctionName: ${{ secrets.RETROBOT_FUNCTION_NAME }}
         Payload: '{ "days": ${{ github.event.inputs.days }} }'

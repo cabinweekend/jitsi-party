@@ -1,0 +1,2 @@
+ShopifyAPI>=12.0.0
+boto3>=1.17

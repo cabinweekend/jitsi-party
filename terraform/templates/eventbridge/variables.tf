@@ -1,14 +1,14 @@
 #
-# API Gateway template
+# Event Bridge template
 #
 
-variable "lambda_arn" {
-  description = "Lambda function ARN"
+variable "bus_name" {
+  description = "Shopify event bus name"
   type        = string
 }
 
-variable "lambda_name" {
-  description = "Lambda function name"
+variable "lambda_arn" {
+  description = "Order procesing lambda ARN"
   type        = string
 }
 

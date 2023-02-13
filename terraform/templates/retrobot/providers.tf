@@ -1,5 +1,5 @@
 #
-# SQS module
+# RetroBot Lambda template
 #
 
 terraform {

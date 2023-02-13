@@ -1,37 +1,81 @@
 * AuthBot2 Notes
-TL;DR: Shopify (Webhook POST) → API Gateway → Validate and Enqueue (Lambda
-Function) → SQS → AuthBot2 (Lambda Function) → Shopify API Endpoint.
+TL;DR: Shopify → EventBridge → AuthBot2 (Lambda Function) → Shopify API
+Endpoint.
 
-When a new order is created, Shopify sends an event to the AWS API Gateway
-endpoint =/webhook=.  Gateway is using Lambda Function «Validate and Enqueue»
-(=/vae/vae.py=) to validate the HMAC signature of the received order data, and
-to submit valid events to the SQS FIFO queue.  Since the Shopify Webhook
-delivery guarantee is «at least once» (see [[https://shopify.dev/apps/webhooks#limitations][doc]]), the FIFO queue with
-content-based deduplication is used.
+When a new order is created, Shopify sends an event to the AWS EventBridge.
 
-Messages received by the queue are processed with the Lambda Function «AuthBot2»
-(=/authbot2/authbot.py=) in batches, up to 10 messages per call.  Function
-timeout is set to 30 seconds, matching the SQS visibility timeout.
+Events are immediately processed with the Lambda Function «AuthBot2»
+(=/authbot2/authbot.py=), 1 event per call.  Function timeout is set to 30
+seconds, and concurrency to 2 due to the Shopify API request rate requirements.
 
-* Shopify Permissions
-AuthoBot2 requires following Shopify permissions:
+* RetroBot Notes
+RetroBot will backfill last =BACKFILL_DAYS= (default is 7) worth of open orders
+into a separate bus to be processed by AuthBot2.  Function timeout is set to 30
+seconds.
 
-Assigned fulfillment — Read access
-Customers — Read access
-Orders — Read and write
-Products — Read access
+* Cognito groups automation
+AuthBot2 will create Cognito groups based on product tags with the «authbot:»
+prefix.  For example, the order with the product tagged as
+«authbot:secret-society-group» will create a «secret-society-group» in Cognito
+if it doesn't exist.  The group name must contain between 1 and 128 non-space
+characters.  To avoid unnecessary complications and mistakes, it is recommended
+to use letters, numbers, and «-» (dashes).
 
 * Manual steps
-Two manual steps are required after the first deployment:
-1. Populate secrets.  To avoid exposing Shopify API credentials to CI/CD and
-   Terraform state, secrets are not populated automatically by Terraform.  These
-   credentials change rarely if ever.
-2. Register webhook with Shopify.  There is no good way to call external API
-   from Terraform.  This operation must be performed once per API Gateway, which
-   is about as unlikely to change after the first provisioning, as Shopify API
-   credentials.
+There is no good way to call arbitrary external APIs from Terraform.  For this
+reason, manual steps are required to complete integration.  It is recommended to
+perform the steps in the following order:
 
-See Terraform output =manual_steps= for details.
+** Shopify API access scope
+AuthBot2 requires the following Shopify Admin API access scopes:
+- read_assigned_fulfillment_orders
+- read_customers
+- write_orders
+- read_orders
+- read_products
+- read_merchant_managed_fulfillment_orders
+- write_merchant_managed_fulfillment_orders
+
+RetroBot requires only =read_orders=.
+
+** Shopify EventBridge
+Set up EventBridge integration. See [[https://shopify.dev/apps/webhooks/configuration/eventbridge#how-eventbridge-integration-works][Shopify documentation]] and [[https://www.youtube.com/watch?v=q1Yyzq6hAuY][YouTube video]] for
+details.  Take note of the bus name.
+
+** Cognito User Pool
+Create Cognito User Pool and take note of its ID.
+
+** Run Terraform
+Pass the following variables to Terraform:
+- =bus_name= — EventBridge bus name from the [[*Shopify EventBridge]] step
+- =cognito_user_pool_id= — Cognito User Pool ID from the [[*Cognito User Pool]] step
+- =shopify_shop_domain= — Shopify Shop domain (e.g. =shopname.myshopify.com=)
+
+** Populate secrets
+To avoid exposing Shopify API credentials to CI/CD and Terraform state, it is
+not populated automatically by Terraform.  See Terraform output =manual_steps=
+for details.
+
+** Register webhook with Shopify
+This will instruct Shopify to start sending new order events to the EventBridge
+bus, thus completing the circuit and making the system go live.  See Terraform
+output =manual_steps= for details.
+
+** Integrate RetroBot with GitHub
+RetroBot is expected to be triggered manually from GitHub Action =backfill=.  In
+order to support this integration, the following Repository Secrets must be
+created:
+
+1. RETROBOT_AWS_ACCESS_KEY_ID — contents of the Terraform output
+   =github_user_access_key=
+2. RETROBOT_AWS_SECRET_ACCESS_KEY — contents of the Terraform output
+   =github_user_secret_key=
+3. RETROBOT_FUNCTION_NAME — contents of the Terraform output
+   =retrobot_lambda_function_name=
+
+** Subscribe to AuthBot2 alarms
+Amazon SNS topic =AuthBotMessages= will receive a notification from the AWS
+CloudWatch when AuthBot2 errors more than once in the last 5 minutes.
 
 * Dependencies
 - AWS CLI 2

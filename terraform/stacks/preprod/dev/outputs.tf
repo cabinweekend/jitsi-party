@@ -5,7 +5,7 @@
 locals {
   webhook_payload = {
     webhook = {
-      address = "${module.apig.api_endpoint}/webhook"
+      address = module.eventbridge.bus_arn
       fields  = ["customer", "id", "line_items", ]
       format  = "json"
       topic   = "orders/create"
@@ -15,6 +15,16 @@ locals {
   populate_secrets = join("\n", [for k, v in module.secrets :
     "$ aws secretsmanager put-secret-value --secret-id ${v.arn} --secret-string \"$${${k}}\""
   ])
+}
+
+output "github_user_access_key" {
+  value     = module.retrobot.access_key
+  sensitive = true
+}
+
+output "github_user_secret_key" {
+  value     = module.retrobot.secret_key
+  sensitive = true
 }
 
 output "manual_steps" {
@@ -30,9 +40,13 @@ ${local.populate_secrets}
 And finally, register the Webhook:
 
 $ curl -d '${jsonencode(local.webhook_payload)}' \
--X POST "https://${var.shopify_shop_url}/admin/api/2022-07/webhooks.json" \
+-X POST "https://${var.shopify_shop_domain}/admin/api/2022-07/webhooks.json" \
 -H "X-Shopify-Access-Token: $${shopify_pass}" \
 -H "Content-Type: application/json"
 
 EOT
+}
+
+output "retrobot_lambda_function_name" {
+  value = module.retrobot.lambda_function_name
 }
